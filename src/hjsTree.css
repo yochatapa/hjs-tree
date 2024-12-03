@@ -1,0 +1,188 @@
+/*Hjs Tree*/
+.tree-move *{
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Non-prefixed version, currently supported by Chrome and Opera */
+}
+.tree-node-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: flex-end;
+}
+div:has(>.tree-node-container):not(.tree-node-sub) {
+  background: var(--white);
+  padding: 0px;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+.dark div:has(>.tree-node-container):not(.tree-node-sub) {
+  background: var(--Grayscale-5);
+}
+.tree-node-main {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 1.5rem;
+  position: relative;
+  border-bottom: 1px solid var(--Grayscale-40);
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--Grayscale-40);
+}
+
+.comment-tree .tree-node-main{
+  height: unset !important;
+}
+.tree-node-main.modified-node {
+  background: var(--Primary-5);
+}
+.tree-node-main.tree-move-node {
+  background: var(--Primary-20) !important;
+  opacity: 0.5;
+}
+.tree-node-main > div {
+  display: flex;
+  padding: 10px 5px;
+}
+.tree-node-main > div > * {
+  margin: 0 3px;
+}
+.tree-node-main.select-node * {
+  color: var(--Primary-50);
+}
+.tree-node-main-left {
+  align-items: center;
+  position: relative;
+  margin-left: 3px;
+  margin-right: 3px;
+}
+.tree-node-main-left-handle {
+  width: 9px;
+  height: 100%;
+  background: url(../img/3dot.png) no-repeat !important;
+  background-size: cover !important;
+  background-position: center !important;
+  border: 0;
+  filter: opacity(0.5);
+  cursor: grab;
+  min-height: 1.8rem;
+  min-width: 1.8rem;
+}
+.tree-node-main-left-toggle {
+  background-color: transparent !important;
+  border: 0 !important;
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+input.tree-node-main-left-toggle:not(.open-node) {
+  background: url(../img/down-arrow2.png) no-repeat !important;
+  filter: invert(100%) opacity(0.5);
+  background-size: cover !important;
+  min-width: auto !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  margin: 0;
+}
+input.tree-node-main-left-toggle.open-node {
+  background: url(../img/up-arrow2.png) no-repeat !important;
+  filter: invert(100%) opacity(0.5);
+  background-size: cover !important;
+  min-width: auto !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  margin: 0;
+}
+.tree-node-main-right-toggle {
+  background-color: transparent !important;
+  border: 0 !important;
+  width: 20px;
+  height: 20px;
+  position: relative;
+}
+input.tree-node-main-right-toggle:not(.open-node) {
+  background: url(../img/down-arrow2.png) no-repeat !important;
+  filter: invert(100%) opacity(0.5);
+  background-size: cover !important;
+  min-width: auto !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  margin: 0;
+}
+input.tree-node-main-right-toggle.open-node {
+  background: url(../img/up-arrow2.png) no-repeat !important;
+  filter: invert(100%) opacity(0.5);
+  background-size: cover !important;
+  min-width: auto !important;
+  box-shadow: none !important;
+  cursor: pointer;
+  margin: 0;
+}
+.tree-node-main-middle {
+  flex: 1 1 auto;
+  overflow: hidden;
+}
+.tree-node-main-middle > div.tree-node-main-middle-child:last-child {
+  cursor: pointer;
+}
+.tree-node-main-middle > .tree-node-main-middle-child:last-child {
+  flex: 1 1 auto;
+  max-width: 100%;
+}
+.tree-node-main-middle-child {
+  display: block;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: calc(100% - 50px);
+  overflow: hidden;
+  align-self: center;
+}
+textarea.tree-node-main-middle-child {
+  overflow: auto;
+}
+.tree-node-main-right {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  padding: 0 5px;
+}
+/*.tree-node-main-right-child {
+  height: 20px;
+  border: 0;
+  box-shadow: none !important;
+  cursor: pointer;
+}*/
+.tree-node-sub {
+  width: calc(100% - 35px);
+}
+.tree-node-sub.tree-non-show {
+  display: none;
+}
+.tree-node-top {
+  width: 100%;
+  background-color: rgba(135, 207, 235, 0.455);
+  z-index: 2;
+}
+.tree-node-top:hover {
+  background-color: skyblue;
+}
+.tree-node-middle {
+  width: 100%;
+  background-color: rgba(135, 207, 235, 0.455);
+  z-index: 2;
+}
+.tree-node-middle:hover {
+  background-color: skyblue;
+}
+.tree-node-bottom {
+  width: calc(100% - 35px);
+  background-color: rgba(135, 207, 235, 0.455);
+  z-index: 2;
+}
+.tree-node-bottom:hover {
+  background-color: skyblue;
+}
