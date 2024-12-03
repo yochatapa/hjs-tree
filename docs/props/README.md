@@ -2,15 +2,15 @@
 
 HjsTree의 주요 속성들을 설명합니다.
 
-# selector
+## selector
 
 `selector`는 HjsTree 생성 위치를 지정해주는 속성입니다.
 
-# treeData
+## treeData
 
 `treeData`는 HjsTree에서 사용될 데이터를 지정해주는 속성입니다.  
 
-## treeData 구조 예시
+### treeData 구조 예시
 ```javascript
 let treeData = [
     { "UP_SN": 0, "SN": 1, "ORDER_NO": 0, "LABEL_NM": "1" },
@@ -23,20 +23,20 @@ let treeData = [
 `treeData`는 배열이며, 각 요소로 JSON 데이터를 가집니다.
 JSON 데이터의 key값은 컬럼명, value값은 데이터입니다.
 
-# idColumn
+## idColumn
 
 `idColumn`은 treeData가 Tree 구성을 갖추는 데 키값이 되는 Column 명을 지정해주는 속성입니다.
 
-# upIdColumn
+## upIdColumn
 
 `upIdColumn`은 상위 Node의 Tree 키 값을 갖는 Column명을 지정해주는 속성입니다.
 
-# labelColumn
+## labelColumn
 
 `labelColumn`은 트리의 Main 영역 - label 정보에 표시될 데이터를 가진 Column을 지정해주는 속성입니다.  
 `labelColumn`는 단수 또는 복수로 지정할 수 있습니다.
 
-## 사용 예시
+### 사용 예시
 ```javascript
 // labelColumn을 단수로 지정하는 경우
 labelColumn: "LABEL_NM";
@@ -45,24 +45,24 @@ labelColumn: "LABEL_NM";
 labelColumn: ["LABEL_NM", "LABEL_NM_2", "LABEL_NM_3"];
 ```
 
-# rootName
+## rootName
 
 `rootName`은 root 레벨의 node들이 갖는 tree의 키 값을 지정하는 속성입니다.  
 `rootName`을 따로 지정하지 않을 시 기본 값은 `"tree-root"`로 설정됩니다.
 
-# orderColumn
+## orderColumn
 
 `orderColumn`은 tree 내에서 순서를 나타내는 column의 column명을 지정하는 속성입니다.  
 `orderColumn`을 따로 지정하지 않을 시 기본 값은 `"TREE_ORDER"`로 설정됩니다.
 
-# defaultNodeId
+## defaultNodeId
 
 `defaultNodeId`는 각 Node의 HTML 요소 ID값을 지정하는 속성입니다.  
 `defaultNodeId`를 따로 지정하지 않을 시 기본 값은 `"treenode"`입니다.
 
 **Node의 HTML 요소 ID는** `defaultNodeId + "_" + Node Index` 입니다.
 
-# checkbox
+## checkbox
 
 `checkbox`는 Node에 checkbox를 생성할 지 지정하는 속성입니다.  
 `checkbox`를 따로 지정하지 않으면 checkbox는 생성되지 않습니다.
@@ -77,7 +77,7 @@ labelColumn: ["LABEL_NM", "LABEL_NM_2", "LABEL_NM_3"];
 checkbox: "left"  // "right" | "both"
 ```
 
-# checkboxColumn
+## checkboxColumn
 
 `checkboxColumn`은 tree의 checkbox가 `left`, `right`, `both`일 때 사용할 수 있는 옵션입니다.  
 `checkboxColumn`은 checkbox에 bind될 column의 id를 지정하여 사용합니다.
@@ -101,8 +101,8 @@ checkbox: "both",
 checkboxColumn: ["CHK", "CHK1"],
 ```
 
-# checkTrueValue
-# checkFalseValue
+## checkTrueValue
+## checkFalseValue
 
 `checkTrueValue`와 `checkFalseValue`는 tree의 checkbox가 `left`, `right`, `both`일 때, `checkboxColumn`이 있을 경우 사용할 수 있는 옵션입니다.
 
@@ -133,7 +133,7 @@ checkTrueValue: ["Y", 1],
 checkFalseValue: ["N", 0],
 ```
 
-# checkEvent
+## checkEvent
 
 `checkEvent`는 tree의 checkbox가 `left`, `right`, `both`일 때 사용할 수 있는 옵션입니다.
 
@@ -166,7 +166,7 @@ checkbox: "both",
 checkEvent: [checkEvent1, checkEvent2],
 ```
 
-# leftBtn
+## leftBtn
 
 `leftBtn`은 Node의 Main-Left 영역에 버튼을 생성할 지 지정하는 속성입니다.  
 `leftBtn`을 따로 지정하지 않으면 버튼은 생성되지 않습니다.
@@ -180,7 +180,7 @@ checkEvent: [checkEvent1, checkEvent2],
 leftBtn: [clickLeftBtn1]  // ["clickLeftBtn1", "clickLeftBtn2"]
 ```
 
-# rightBtn
+## rightBtn
 
 `rightBtn`은 Node의 Main-Right 영역에 버튼을 생성할지 지정하는 속성입니다.  
 `rightBtn`을 따로 지정하지 않으면 버튼은 생성되지 않습니다.
@@ -196,7 +196,7 @@ leftBtn: [clickLeftBtn1]  // ["clickLeftBtn1", "clickLeftBtn2"]
 rightBtn: [clickRightBtn1]  // [clickRightBtn1, clickRightBtn2]
 ```
 
-# dataset
+## dataset
 
 `dataset`은 bind할 dataset을 지정하는 옵션입니다.  
 
@@ -209,7 +209,7 @@ rightBtn: [clickRightBtn1]  // [clickRightBtn1, clickRightBtn2]
 해당 `dataset`을 bind시킨 field가 있을 경우, field의 값이 변경되면 tree의 data 값도 함께 변경됩니다.
 
 
-# editable
+## editable
 
 `editable`은 tree에서 label 정보를 수정할 수 있는지 여부를 지정하는 옵션입니다.  
 `editable`을 지정하지 않으면, 기본 값은 `false`로 설정됩니다.
@@ -261,7 +261,7 @@ rightBtn: [clickRightBtn1]  // [clickRightBtn1, clickRightBtn2]
 <input id="EDITABLE_input">
 ```
 
-# draggable
+## draggable
 
 `draggable`은 node를 드래그하여 움직일 수 있는지 여부를 지정하는 옵션입니다.  
 `draggable`을 지정하지 않으면, 기본 값은 `false`로 설정됩니다.
@@ -319,7 +319,7 @@ rightBtn: [clickRightBtn1]  // [clickRightBtn1, clickRightBtn2]
 ```
 
 
-# selectable
+## selectable
 
 `selectable`은 tree를 선택할 수 있는지 여부를 지정하는 옵션입니다.  
 `selectable`을 지정하지 않으면, 기본 값은 `false`로 설정됩니다.
@@ -367,7 +367,7 @@ rightBtn: [clickRightBtn1]  // [clickRightBtn1, clickRightBtn2]
 <div id="selectable_div"></div>
 ```
 
-# event
+## event
 
 `event`는 tree에 이벤트를 추가할 지 여부를 지정하는 옵션입니다.  
 `event`를 지정하지 않으면 별도로 지정되는 이벤트는 없습니다.
