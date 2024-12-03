@@ -1,6 +1,3 @@
-<script src="../../src/hjsTree.js"></script>
-<link rel="stylesheet" type="text/css" href="../../src/hjsTree.css"/>
-
 # HjsTree 속성 설명
 
 HjsTree의 주요 속성들을 설명합니다.
@@ -264,44 +261,6 @@ rightBtn: [clickRightBtn1]  // [clickRightBtn1, clickRightBtn2]
 <input id="EDITABLE_input">
 ```
 
-<script>
-    let editableSampleTree = new HjsTree();
-
-    let sampleData1 = [
-        {
-            "UP_SN": 0,
-            "SN": 1,
-            "ORDER_NO": 0,
-            "MENU_NM": "sample data 1"
-        }, {
-            "UP_SN": 0,
-            "SN": 2,
-            "ORDER_NO": 0,
-            "MENU_NM": "sample data 2"
-        }, {
-            "UP_SN": 2,
-            "SN": 3,
-            "ORDER_NO": 0,
-            "MENU_NM": "sample data 3"
-        }
-    ];
-    
-    editableSampleTree.init({
-        selector: "#editable_div",
-        treeData: sampleData1,
-        idColumn: "SN",
-        upIdColumn: "UP_SN",
-        rootName: "0",
-        orderColumn: "ORDER_NO",
-        labelColumn: "MENU_NM",
-        dataset: "EDITABLE",
-        editable: true
-    })
-</script>
-
-<div id="editable_div"></div>
-<input id="EDITABLE_input">
-
 # draggable
 
 `draggable`은 node를 드래그하여 움직일 수 있는지 여부를 지정하는 옵션입니다.  
@@ -359,41 +318,6 @@ rightBtn: [clickRightBtn1]  // [clickRightBtn1, clickRightBtn2]
 <div id="draggable_div"></div>
 ```
 
-<script>
-    let draggableSampleTree = new HjsTree();
-
-    let sampleData1 = [
-        {
-            "UP_SN": 0,
-            "SN": 1,
-            "ORDER_NO": 0,
-            "MENU_NM": "sample data 1"
-        }, {
-            "UP_SN": 0,
-            "SN": 2,
-            "ORDER_NO": 0,
-            "MENU_NM": "sample data 2"
-        }, {
-            "UP_SN": 2,
-            "SN": 3,
-            "ORDER_NO": 0,
-            "MENU_NM": "sample data 3"
-        }
-    ];
-    
-    draggableSampleTree.init({
-        selector: "#draggable_div",
-        treeData: sampleData1,
-        idColumn: "SN",
-        upIdColumn: "UP_SN",
-        orderColumn: "ORDER_NO",
-        labelColumn: "MENU_NM",
-        draggable: true
-    })
-</script>
-
-<div id="draggable_div"></div>
-
 
 # selectable
 
@@ -442,41 +366,6 @@ rightBtn: [clickRightBtn1]  // [clickRightBtn1, clickRightBtn2]
 
 <div id="selectable_div"></div>
 ```
-
-<script>
-    let selectableSampleTree = new HjsTree();
-
-    let sampleData1 = [
-        {
-            "UP_SN": 0,
-            "SN": 1,
-            "ORDER_NO": 0,
-            "MENU_NM": "sample data 1"
-        }, {
-            "UP_SN": 0,
-            "SN": 2,
-            "ORDER_NO": 0,
-            "MENU_NM": "sample data 2"
-        }, {
-            "UP_SN": 2,
-            "SN": 3,
-            "ORDER_NO": 0,
-            "MENU_NM": "sample data 3"
-        }
-    ];
-    
-    selectableSampleTree.init({
-        selector: "#selectable_div",
-        treeData: sampleData1,
-        idColumn: "SN",
-        upIdColumn: "UP_SN",
-        orderColumn: "ORDER_NO",
-        labelColumn: "MENU_NM",
-        selectable: true
-    })
-</script>
-
-<div id="selectable_div"></div>
 
 # event
 
