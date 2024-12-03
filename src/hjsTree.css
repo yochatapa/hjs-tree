@@ -63,7 +63,7 @@ div:has(>.tree-node-container):not(.tree-node-sub) {
 .tree-node-main-left-handle {
   width: 9px;
   height: 100%;
-  background: url(../img/3dot.png) no-repeat !important;
+  background: url(./img/3dot.png) no-repeat !important;
   background-size: cover !important;
   background-position: center !important;
   border: 0;
@@ -80,7 +80,7 @@ div:has(>.tree-node-container):not(.tree-node-sub) {
   position: relative;
 }
 input.tree-node-main-left-toggle:not(.open-node) {
-  background: url(../img/down-arrow2.png) no-repeat !important;
+  background: url(./img/down-arrow2.png) no-repeat !important;
   filter: invert(100%) opacity(0.5);
   background-size: cover !important;
   min-width: auto !important;
@@ -89,7 +89,7 @@ input.tree-node-main-left-toggle:not(.open-node) {
   margin: 0;
 }
 input.tree-node-main-left-toggle.open-node {
-  background: url(../img/up-arrow2.png) no-repeat !important;
+  background: url(./img/up-arrow2.png) no-repeat !important;
   filter: invert(100%) opacity(0.5);
   background-size: cover !important;
   min-width: auto !important;
@@ -105,7 +105,7 @@ input.tree-node-main-left-toggle.open-node {
   position: relative;
 }
 input.tree-node-main-right-toggle:not(.open-node) {
-  background: url(../img/down-arrow2.png) no-repeat !important;
+  background: url(./img/down-arrow2.png) no-repeat !important;
   filter: invert(100%) opacity(0.5);
   background-size: cover !important;
   min-width: auto !important;
@@ -114,7 +114,7 @@ input.tree-node-main-right-toggle:not(.open-node) {
   margin: 0;
 }
 input.tree-node-main-right-toggle.open-node {
-  background: url(../img/up-arrow2.png) no-repeat !important;
+  background: url(./img/up-arrow2.png) no-repeat !important;
   filter: invert(100%) opacity(0.5);
   background-size: cover !important;
   min-width: auto !important;
