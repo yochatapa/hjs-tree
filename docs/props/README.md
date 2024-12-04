@@ -203,7 +203,7 @@ rightBtn: [clickRightBtn1]  // [clickRightBtn1, clickRightBtn2]
 아래와 같은 규칙이 있는 html 요소를 참조합니다.
 
 ```html
-<input id="[dataset명]_[id명]"/>
+<input name="[dataset명]_[id명]"/>
 ```
 
 해당 `dataset`을 bind시킨 field가 있을 경우, field의 값이 변경되면 tree의 data 값도 함께 변경됩니다.
