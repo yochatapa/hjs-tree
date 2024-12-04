@@ -50,11 +50,6 @@ Tree 메소드은 총 42개의 다양한 메소드들로 이루어져있습니�
 |                            | 11. [removeRightBtn](./Methods.md#removeRightBtn)       | 오른쪽 버튼을 제거합니다.                      |
 |                            | 12. [addLeftBtn](./Methods.md#addLeftBtn)               | 왼쪽 버튼을 추가합니다.                        |
 |                            | 13. [removeLeftBtn](./Methods.md#removeLeftBtn)         | 왼쪽 버튼을 제거합니다.                        |
-| **Node 동작 메소드**        | 1. [expandNode](./Methods.md#expandNode)                | Node를 확장합니다.                             |
-|                            | 2. [collapseNode](./Methods.md#collapseNode)            | Node를 축소합니다.                             |
-|                            | 3. [toggleNode](./Methods.md#toggleNode)                | Node의 상태를 토글합니다.                      |
-|                            | 4. [selectNode](./Methods.md#selectNode)                | Node를 선택합니다.                             |
-|                            | 5. [moveNode](./Methods.md#moveNode)                    | Node를 이동시킵니다.                           |
 | **트리 동작 메소드**        | 1. [expandNode](./Methods.md#expandNode)                | 특정 Node를 확장합니다.                        |
 |                            | 2. [expandNodeAll](./Methods.md#expandNodeAll)          | 모든 Node를 확장합니다.                        |
 |                            | 3. [collapseNode](./Methods.md#collapseNode)            | 특정 Node를 축소합니다.                        |
@@ -79,7 +74,6 @@ Tree 메소드은 총 42개의 다양한 메소드들로 이루어져있습니�
 |                            | 11. [searchNode](./Methods.md#searchNode)              | 특정 조건에 맞는 Node를 검색합니다.            |
 |                            | 12. [moveNode](./Methods.md#moveNode)                  | Node를 이동시킵니다.                           |
 |                            | 13. [hasChild](./Methods.md#hasChild)                  | Node가 자식을 가지고 있는지 확인합니다.         |
-|                            | 14. [getCheckedNode](./Methods.md#getCheckedNode)       | 체크된 Node 목록을 가져옵니다.                 |
 | **Data 관련 메소드**        | 1. [getData](./Methods.md#getData)                      | Node의 데이터를 가져옵니다.                    |
 |                            | 2. [getNodeValue](./Methods.md#getNodeValue)            | Node의 값을 가져옵니다.                        |
 |                            | 3. [setNodeValue](./Methods.md#setNodeValue)            | Node의 값을 설정합니다.                        |
