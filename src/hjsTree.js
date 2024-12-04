@@ -144,8 +144,9 @@ HjsTree.prototype.init = function(option){
                         }
                         dropzone.getTop().setAttribute("style","height:10px;margin-bottom:5px");
                         dropzone.getMiddle().setAttribute("style","height:10px;margin-bottom:5px");
-                        if(!!obj._option.dragOption){
-                            if(obj._option.dragOption.moveParent !== false){
+                        
+                        if(obj._option.draggable){
+                            if(!!!obj._option.dragOption || obj._option.dragOption?.moveParent !== false){
                                 dropzone.getBottom().setAttribute("style","height:10px;margin-bottom:5px");
                             }
                         }
