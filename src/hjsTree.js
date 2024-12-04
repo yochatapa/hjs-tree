@@ -41,19 +41,20 @@ HjsTree.prototype.init = function(option){
                                 }
                             })
                             let targetName = item.getAttribute("name");
-                            if(datePickerList[targetName] != undefined && datePickerList[targetName] != null){
-                                datePickerList[targetName].on('close',()=>{
-                                    if(obj.getSelectedNodes().length==1){
-                                        let node = obj.getSelectedNode();
-                                        let id = item.name.replace(obj._option.dataset+"_","");
-                                        let flag = node.setNodeValue(id,item.value);
+                            // POWER MDD 용
+                            // if(datePickerList[targetName] != undefined && datePickerList[targetName] != null){
+                            //     datePickerList[targetName].on('close',()=>{
+                            //         if(obj.getSelectedNodes().length==1){
+                            //             let node = obj.getSelectedNode();
+                            //             let id = item.name.replace(obj._option.dataset+"_","");
+                            //             let flag = node.setNodeValue(id,item.value);
                             
-                                        if(flag != 0){
-                                            item.value = node.getNodeValue(id);
-                                        }
-                                    }
-                                })
-                            }
+                            //             if(flag != 0){
+                            //                 item.value = node.getNodeValue(id);
+                            //             }
+                            //         }
+                            //     })
+                            // }
                         })
                     }
                 }
@@ -74,19 +75,20 @@ HjsTree.prototype.init = function(option){
                             }
                         })
                         let targetName = item.getAttribute("name");
-                        if(datePickerList[targetName] != undefined && datePickerList[targetName] != null){
-                            datePickerList[targetName].on('close',()=>{
-                                if(obj.getSelectedNodes().length==1){
-                                    let node = obj.getSelectedNode();
-                                    let id = item.name.replace(obj._option.dataset+"_","");
-                                    let flag = node.setNodeValue(id,item.value);
+                        // POWER MDD 용
+                        // if(datePickerList[targetName] != undefined && datePickerList[targetName] != null){
+                        //     datePickerList[targetName].on('close',()=>{
+                        //         if(obj.getSelectedNodes().length==1){
+                        //             let node = obj.getSelectedNode();
+                        //             let id = item.name.replace(obj._option.dataset+"_","");
+                        //             let flag = node.setNodeValue(id,item.value);
                         
-                                    if(flag != 0){
-                                        item.value = node.getNodeValue(id);
-                                    }
-                                }
-                            })
-                        }
+                        //             if(flag != 0){
+                        //                 item.value = node.getNodeValue(id);
+                        //             }
+                        //         }
+                        //     })
+                        // }
                     })
                 }
             }
