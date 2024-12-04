@@ -14,13 +14,13 @@
   align-items: flex-end;
 }
 div:has(>.tree-node-container):not(.tree-node-sub) {
-  background: var(--white);
+  background: #ffffff;
   padding: 0px;
   max-width: 100%;
   box-sizing: border-box;
 }
 .dark div:has(>.tree-node-container):not(.tree-node-sub) {
-  background: var(--Grayscale-5);
+  background: #F8F8F8;
 }
 .tree-node-main {
   display: flex;
@@ -28,20 +28,20 @@ div:has(>.tree-node-container):not(.tree-node-sub) {
   width: 100%;
   min-height: 1.5rem;
   position: relative;
-  border-bottom: 1px solid var(--Grayscale-40);
+  border-bottom: 1px solid #C6C6C6;
   padding-top: 10px;
   padding-bottom: 10px;
-  border-bottom: 1px solid var(--Grayscale-40);
+  border-bottom: 1px solid#C6C6C6;
 }
 
 .comment-tree .tree-node-main{
   height: unset !important;
 }
 .tree-node-main.modified-node {
-  background: var(--Primary-5);
+  background: #EFF5FF;
 }
 .tree-node-main.tree-move-node {
-  background: var(--Primary-20) !important;
+  background: #A7C4F7 !important;
   opacity: 0.5;
 }
 .tree-node-main > div {
@@ -52,7 +52,7 @@ div:has(>.tree-node-container):not(.tree-node-sub) {
   margin: 0 3px;
 }
 .tree-node-main.select-node * {
-  color: var(--Primary-50);
+  color: #246BEB;
 }
 .tree-node-main-left {
   align-items: center;
@@ -63,7 +63,7 @@ div:has(>.tree-node-container):not(.tree-node-sub) {
 .tree-node-main-left-handle {
   width: 9px;
   height: 100%;
-  background: url(./img/3dot.png) no-repeat !important;
+  background: url(/images/3dot.png) no-repeat !important;
   background-size: cover !important;
   background-position: center !important;
   border: 0;
@@ -80,7 +80,7 @@ div:has(>.tree-node-container):not(.tree-node-sub) {
   position: relative;
 }
 input.tree-node-main-left-toggle:not(.open-node) {
-  background: url(./img/down-arrow2.png) no-repeat !important;
+  background: url(/images/down-arrow2.png) no-repeat !important;
   filter: invert(100%) opacity(0.5);
   background-size: cover !important;
   min-width: auto !important;
@@ -89,7 +89,7 @@ input.tree-node-main-left-toggle:not(.open-node) {
   margin: 0;
 }
 input.tree-node-main-left-toggle.open-node {
-  background: url(./img/up-arrow2.png) no-repeat !important;
+  background: url(/images/up-arrow2.png) no-repeat !important;
   filter: invert(100%) opacity(0.5);
   background-size: cover !important;
   min-width: auto !important;
@@ -105,7 +105,7 @@ input.tree-node-main-left-toggle.open-node {
   position: relative;
 }
 input.tree-node-main-right-toggle:not(.open-node) {
-  background: url(./img/down-arrow2.png) no-repeat !important;
+  background: url(/images/down-arrow2.png) no-repeat !important;
   filter: invert(100%) opacity(0.5);
   background-size: cover !important;
   min-width: auto !important;
@@ -114,7 +114,7 @@ input.tree-node-main-right-toggle:not(.open-node) {
   margin: 0;
 }
 input.tree-node-main-right-toggle.open-node {
-  background: url(./img/up-arrow2.png) no-repeat !important;
+  background: url(/images/up-arrow2.png) no-repeat !important;
   filter: invert(100%) opacity(0.5);
   background-size: cover !important;
   min-width: auto !important;
