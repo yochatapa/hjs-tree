@@ -1701,7 +1701,7 @@ HjsTreeNode.prototype.addNode =function(data){
         }
     
         if(btnFlag && this.tree._option.treeNode[0]!=this){
-            let tempBtn = document.createElement("input");
+            let tempBtn = document.createElement("label");
             tempBtn.setAttribute("type","button");
             tempBtn.classList.add("tree-node-main-left-toggle");
             tempBtn.classList.add("open-node");
@@ -1729,7 +1729,7 @@ HjsTreeNode.prototype.addNode =function(data){
         }
     
         if(btnFlag && this.tree._option.treeNode[0]!=this){
-            let tempBtn = document.createElement("input");
+            let tempBtn = document.createElement("label");
             tempBtn.setAttribute("type","button");
             tempBtn.classList.add("tree-node-main-right-toggle");
             tempBtn.classList.add("open-node");
@@ -1825,7 +1825,7 @@ HjsTreeNode.prototype.moveNode = function(index,flag="last",std){
             }
 
             if(btnFlag){
-                let tempBtn = document.createElement("input");
+                let tempBtn = document.createElement("label");
                 tempBtn.setAttribute("type","button");
                 tempBtn.classList.add("tree-node-main-left-toggle");
                 tempBtn.classList.add("open-node");
@@ -1852,7 +1852,7 @@ HjsTreeNode.prototype.moveNode = function(index,flag="last",std){
             }
 
             if(btnFlag){
-                let tempBtn = document.createElement("input");
+                let tempBtn = document.createElement("label");
                 tempBtn.setAttribute("type","button");
                 tempBtn.classList.add("tree-node-main-right-toggle");
                 tempBtn.classList.add("open-node");
@@ -2094,7 +2094,7 @@ HjsTreeNode.prototype.createNode = function(rerenderYn=false){
         }
 
         if(this.childNode.length!=0 && option.toggleHandle === "left"){
-            let tempBtn = document.createElement("input");
+            let tempBtn = document.createElement("label");
             tempBtn.type = "button";
             tempBtn.classList.add("tree-node-main-left-toggle");
             tempBtn.classList.toggle("open-node");
@@ -2565,7 +2565,7 @@ HjsTreeNode.prototype.createNode = function(rerenderYn=false){
         }
 
         if(this.childNode.length!=0 && option.toggleHandle === "right"){
-            let tempBtn = document.createElement("input");
+            let tempBtn = document.createElement("label");
             tempBtn.type = "button";
             tempBtn.classList.add("tree-node-main-right-toggle");
             tempBtn.classList.toggle("open-node");
