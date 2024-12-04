@@ -29,8 +29,8 @@ div:has(>.tree-node-container):not(.tree-node-sub) {
   min-height: 1.5rem;
   position: relative;
   border-bottom: 1px solid #C6C6C6;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 7px;
+  padding-bottom: 7px;
   border-bottom: 1px solid#C6C6C6;
 }
 
@@ -46,7 +46,6 @@ div:has(>.tree-node-container):not(.tree-node-sub) {
 }
 .tree-node-main > div {
   display: flex;
-  padding: 10px 5px;
 }
 .tree-node-main > div > * {
   margin: 0 3px;
@@ -63,64 +62,87 @@ div:has(>.tree-node-container):not(.tree-node-sub) {
 .tree-node-main-left-handle {
   width: 9px;
   height: 100%;
-  background: url(/images/3dot.png) no-repeat !important;
-  background-size: cover !important;
-  background-position: center !important;
   border: 0;
   filter: opacity(0.5);
   cursor: grab;
-  min-height: 1.8rem;
-  min-width: 1.8rem;
+  min-height: 1rem;
+}
+.tree-node-main-left-handle:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 5px;
+  height: 21px;
+  background: radial-gradient(circle, #000 40%, transparent 10%);
+  background-size: 100% 33%;
+  background-repeat: repeat-y;
 }
 .tree-node-main-left-toggle {
   background-color: transparent !important;
   border: 0 !important;
-  width: 20px;
-  height: 20px;
+  width: .8rem;
+  height: 1rem;
   position: relative;
 }
-input.tree-node-main-left-toggle:not(.open-node) {
-  background: url(/images/down-arrow2.png) no-repeat !important;
-  filter: invert(100%) opacity(0.5);
-  background-size: cover !important;
-  min-width: auto !important;
-  box-shadow: none !important;
+label.tree-node-main-left-toggle:not(.open-node)::after {
+  content: '';
+  position: absolute;
+  left: 0.2rem;
+  top: 0.2rem;
+  border-left: .6rem solid #c6c6c6;
+  border-top: .4rem solid transparent;
+  border-bottom: 0.4rem solid transparent;
   cursor: pointer;
-  margin: 0;
 }
-input.tree-node-main-left-toggle.open-node {
-  background: url(/images/up-arrow2.png) no-repeat !important;
-  filter: invert(100%) opacity(0.5);
+label.tree-node-main-left-toggle.open-node::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.3rem;
+  border-left: .4rem solid transparent;
+  border-right: .4rem solid transparent;
+  border-bottom: 0.6rem solid #c6c6c6;
+  cursor: pointer;
+}
+label.tree-node-main-left-toggle.open-node {
   background-size: cover !important;
   min-width: auto !important;
   box-shadow: none !important;
   cursor: pointer;
-  margin: 0;
 }
 .tree-node-main-right-toggle {
   background-color: transparent !important;
   border: 0 !important;
-  width: 20px;
-  height: 20px;
+  width: .8rem;
+  height: 1rem;
   position: relative;
 }
-input.tree-node-main-right-toggle:not(.open-node) {
-  background: url(/images/down-arrow2.png) no-repeat !important;
-  filter: invert(100%) opacity(0.5);
-  background-size: cover !important;
-  min-width: auto !important;
-  box-shadow: none !important;
+label.tree-node-main-right-toggle:not(.open-node)::after {
+  content: '';
+  position: absolute;
+  left: 0.1rem;
+  top: 0.2rem;
+  border-right: .6rem solid #c6c6c6;
+  border-top: .4rem solid transparent;
+  border-bottom: 0.4rem solid transparent;
   cursor: pointer;
-  margin: 0;
 }
-input.tree-node-main-right-toggle.open-node {
-  background: url(/images/up-arrow2.png) no-repeat !important;
-  filter: invert(100%) opacity(0.5);
+label.tree-node-main-right-toggle.open-node::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.3rem;
+  border-left: .4rem solid transparent;
+  border-right: .4rem solid transparent;
+  border-bottom: 0.6rem solid #c6c6c6;
+  cursor: pointer;
+}
+label.tree-node-main-right-toggle.open-node {
   background-size: cover !important;
   min-width: auto !important;
   box-shadow: none !important;
   cursor: pointer;
-  margin: 0;
 }
 .tree-node-main-middle {
   flex: 1 1 auto;
