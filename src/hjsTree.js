@@ -2408,7 +2408,7 @@ HjsTreeNode.prototype.createNode = function(rerenderYn=false){
     
                             tempDiv.parentElement.insertBefore(tempLabel, tempDiv.nextSibling);
                             tempDiv.remove();
-                            if(option?.editOption?.[labelNm]?.directEdit===false) tempLabel.focus();
+                            if(!!!option?.editOption?.[labelNm] || option?.editOption?.[labelNm]?.directEdit===false) tempLabel.focus();
                         });
                     }
                 }
