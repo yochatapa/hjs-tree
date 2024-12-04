@@ -14,7 +14,6 @@
   align-items: flex-end;
 }
 div:has(>.tree-node-container):not(.tree-node-sub) {
-  background: #ffffff;
   padding: 0px;
   max-width: 100%;
   box-sizing: border-box;
