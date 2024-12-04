@@ -4,29 +4,29 @@ Node 메소드은 총 23개의 다양한 메소드들로 이루어져있습니�
 
 | **분류**                  | **메소드**                                                    | **설명**                                    |
 |---------------------------|--------------------------------------------------------------|---------------------------------------------|
-| **Node 정보 메소드**       | 1. [getIndex](./Methods.md#getIndex)               | Node의 인덱스를 가져옵니다.                    |
-|                           | 2. [getParentNode](./Methods.md#getParentNode)     | Node의 부모 노드를 가져옵니다.                  |
-|                           | 3. [getChildNode](./Methods.md#getChildNode)       | Node의 자식 노드를 가져옵니다.                  |
-|                           | 4. [hasChild](./Methods.md#hasChild)               | Node가 자식을 가지고 있는지 확인합니다.          |
-|                           | 5. [getDepth](./Methods.md#getDepth)               | Node의 depth를 가져옵니다.                     |
-| **Node 동작 메소드**       | 1. [expandNode](./Methods.md#expandNode)           | Node를 확장합니다.                              |
-|                           | 2. [collapseNode](./Methods.md#collapseNode)       | Node를 축소합니다.                              |
-|                           | 3. [toggleNode](./Methods.md#toggleNode)           | Node의 상태를 토글합니다.                        |
-|                           | 4. [selectNode](./Methods.md#selectNode)           | Node를 선택합니다.                              |
-|                           | 5. [moveNode](./Methods.md#moveNode)               | Node를 이동시킵니다.                            |
-| **Node 요소 메소드**       | 1. [getNodeId](./Methods.md#getNodeId)             | Node 요소의 ID를 가져옵니다.                     |
-|                           | 2. [getNodeElement](./Methods.md#getNodeElement)   | Node의 DOM 요소를 가져옵니다.                    |
-|                           | 3. [getMain](./Methods.md#getMain)                 | Node의 Main 요소를 가져옵니다.                   |
-|                           | 4. [getMainLeft](./Methods.md#getMainLeft)         | Node의 Left 요소를 가져옵니다.                   |
-|                           | 5. [getMainMiddle](./Methods.md#getMainMiddle)     | Node의 Middle 요소를 가져옵니다.                 |
-|                           | 6. [getMainRight](./Methods.md#getMainRight)       | Node의 Right 요소를 가져옵니다.                  |
-|                           | 7. [getSub](./Methods.md#getSub)                   | Node의 Sub 요소를 가져옵니다.                    |
-| **Node 데이터 메소드**     | 1. [getData](./Methods.md#getData)                 | Node의 데이터를 가져옵니다.                      |
-|                           | 2. [getNodeValue](./Methods.md#getNodeValue)       | Node의 값을 가져옵니다.                         |
-|                           | 3. [setNodeValue](./Methods.md#setNodeValue)       | Node의 값을 설정합니다.                         |
-|                           | 4. [getFlag](./Methods.md#getFlag)                 | Node의 플래그를 가져옵니다.                      |
-|                           | 5. [addNode](./Methods.md#addNode)                 | 새로운 Node를 추가합니다.                        |
-|                           | 6. [removeNode](./Methods.md#removeNode)           | Node를 삭제합니다.                              |
+| **Node 정보 메소드**       | 1. [getIndex](#getIndex)               | Node의 인덱스를 가져옵니다.                    |
+|                           | 2. [getParentNode](#getParentNode)     | Node의 부모 노드를 가져옵니다.                  |
+|                           | 3. [getChildNode](#getChildNode)       | Node의 자식 노드를 가져옵니다.                  |
+|                           | 4. [hasChild](#hasChild)               | Node가 자식을 가지고 있는지 확인합니다.          |
+|                           | 5. [getDepth](#getDepth)               | Node의 depth를 가져옵니다.                     |
+| **Node 동작 메소드**       | 1. [expandNode](#expandNode)           | Node를 확장합니다.                              |
+|                           | 2. [collapseNode](#collapseNode)       | Node를 축소합니다.                              |
+|                           | 3. [toggleNode](#toggleNode)           | Node의 상태를 토글합니다.                        |
+|                           | 4. [selectNode](#selectNode)           | Node를 선택합니다.                              |
+|                           | 5. [moveNode](#moveNode)               | Node를 이동시킵니다.                            |
+| **Node 요소 메소드**       | 1. [getNodeId](#getNodeId)             | Node 요소의 ID를 가져옵니다.                     |
+|                           | 2. [getNodeElement](#getNodeElement)   | Node의 DOM 요소를 가져옵니다.                    |
+|                           | 3. [getMain](#getMain)                 | Node의 Main 요소를 가져옵니다.                   |
+|                           | 4. [getMainLeft](#getMainLeft)         | Node의 Left 요소를 가져옵니다.                   |
+|                           | 5. [getMainMiddle](#getMainMiddle)     | Node의 Middle 요소를 가져옵니다.                 |
+|                           | 6. [getMainRight](#getMainRight)       | Node의 Right 요소를 가져옵니다.                  |
+|                           | 7. [getSub](#getSub)                   | Node의 Sub 요소를 가져옵니다.                    |
+| **Node 데이터 메소드**     | 1. [getData](#getData)                 | Node의 데이터를 가져옵니다.                      |
+|                           | 2. [getNodeValue](#getNodeValue)       | Node의 값을 가져옵니다.                         |
+|                           | 3. [setNodeValue](#setNodeValue)       | Node의 값을 설정합니다.                         |
+|                           | 4. [getFlag](#getFlag)                 | Node의 플래그를 가져옵니다.                      |
+|                           | 5. [addNode](#addNode)                 | 새로운 Node를 추가합니다.                        |
+|                           | 6. [removeNode](#removeNode)           | Node를 삭제합니다.                              |
 
 
 각 메소드를 기능별로 구분해보면 다음과 같이 분류됩니다.
