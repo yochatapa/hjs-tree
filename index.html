@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hjs Sample</title>
+    <script src="./src/HjsTree.js"></script>
+    <link rel="stylesheet" href="./src/HjsTree.css">
+    <style>
+        html, body{
+            margin: 0;
+            padding: 0;
+            background-color: aliceblue;
+        }
+
+        .container{
+            padding: 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap : 20px;
+        }
+
+        .container>div{
+            width: 300px;
+            padding: 1rem;
+            box-shadow: 0 .4rem .7rem #0000004d;
+            border-radius: 1.2rem;
+            border: 1px solid rgba(255, 255, 255, .2);
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1>selectable</h1>
+            <div id="selectable"></div>
+        </div>
+        <div>
+            <h1>editable</h1>
+            <div id="editable"></div>
+        </div>
+        <div>
+            <h1>draggable</h1>
+            <div id="draggable"></div>
+        </div>
+        <div>
+            <h1>dataset</h1>
+            <div style="margin-bottom:5px;">
+                <label>Dataset : BIND</label>
+                <br>
+                <label>Column : NAME_COLUMN</label>
+                <br>
+                <input name="BIND_NAME_COLUMN"/>
+            </div>
+            <div id="dataset"></div>
+        </div>
+    </div>
+    
+    <script>
+        const sampleData1 = [
+            {    "UP_SN": 0,
+                "SN": 1,
+                "ORDER_NO": 0,
+                "NAME_COLUMN": "sample data 1"
+            }, {
+                "UP_SN": 0,
+                "SN": 2,
+                "ORDER_NO": 0,
+                "NAME_COLUMN": "sample data 2"
+            }, {
+                "UP_SN": 2,
+                "SN": 3,
+                "ORDER_NO": 0,
+                "NAME_COLUMN": "sample data 3"
+            }, {
+                "UP_SN": 3,
+                "SN": 4,
+                "ORDER_NO": 0,
+                "NAME_COLUMN": "sample data 4"
+            }, {
+                "UP_SN": 1,
+                "SN": 5,
+                "ORDER_NO": 0,
+                "NAME_COLUMN": "sample data 5"
+            }, {
+                "UP_SN": 0,
+                "SN": 6,
+                "ORDER_NO": 0,
+                "NAME_COLUMN": "sample data 6"
+            }
+        ];
+
+        const selectableSampleTree = new HjsTree();
+
+        selectableSampleTree.init({
+            selector: "#selectable",
+            treeData: sampleData1,
+            idColumn: "SN",
+            upIdColumn: "UP_SN",
+            rootName: "0",
+            orderColumn: "ORDER_NO",
+            labelColumn: "NAME_COLUMN",
+            selectable: true,
+        })
+
+        const editableSampleTree = new HjsTree();
+
+        editableSampleTree.init({
+            selector: "#editable",
+            treeData: sampleData1,
+            idColumn: "SN",
+            upIdColumn: "UP_SN",
+            rootName: "0",
+            orderColumn: "ORDER_NO",
+            labelColumn: "NAME_COLUMN",
+            editable: true
+        })
+
+        const draggableSampleTree = new HjsTree();
+
+        draggableSampleTree.init({
+            selector: "#draggable",
+            treeData: sampleData1,
+            idColumn: "SN",
+            upIdColumn: "UP_SN",
+            rootName: "0",
+            orderColumn: "ORDER_NO",
+            labelColumn: "NAME_COLUMN",
+            draggable: true,
+        })
+
+        const datasetSampleTree = new HjsTree();
+
+        datasetSampleTree.init({
+            selector: "#dataset",
+            treeData: sampleData1,
+            idColumn: "SN",
+            upIdColumn: "UP_SN",
+            rootName: "0",
+            orderColumn: "ORDER_NO",
+            labelColumn: "NAME_COLUMN",
+            selectable : true,
+            dataset : "BIND"
+        })
+    </script>
+</body>
+</html>
