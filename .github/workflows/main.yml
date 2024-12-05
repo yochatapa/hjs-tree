@@ -19,8 +19,8 @@ jobs:
             sed -i 's|./src/HjsTree.js|/HjsTree.js|g' index.html
             sed -i 's|./src/HjsTree.css|/HjsTree.css|g' index.html
 
-            mv src/HjsTree.js ./   # src/HjsTree.js를 루트 디렉토리로 이동
-            mv src/HjsTree.css ./  # src/HjsTree.css를 루트 디렉토리로 이동
+            find -name "HjsTree.js"
+            find -name "HjsTree.css"
 
       - name: Set up GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
