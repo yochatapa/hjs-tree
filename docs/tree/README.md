@@ -2,6 +2,8 @@
 
 `Tree`는 HjsTree의 **옵션** 이나 **Tree 안 Node**, **Tree 데이터** 같은 Tree와 관련된 전체적인 정보들을 담고 있습니다.
 
+[Demo 확인하기](https://yochatapa.github.io/hjs-tree/)
+
 ## 구조
 
 `Tree`에는 `Node`들이 포합되어 있습니다. 
