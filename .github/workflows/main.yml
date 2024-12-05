@@ -15,11 +15,9 @@ jobs:
 
       - name: Update paths in index.html
         run: |
-            # './src/HjsTree.js'를 '/hjs-tree/src/HjsTree.js'로 변경
+            # index.html 내에서 './src/HjsTree.js|css'를 '/hjs-tree/src/HjsTree.js|css'로 변경
             sed -i 's|./src/HjsTree.js|/hjs-tree/src/HjsTree.js|g' index.html
-            # './src/HjsTree.css'를 '/hjs-tree/src/HjsTree.css'로 변경
             sed -i 's|./src/HjsTree.css|/hjs-tree/src/HjsTree.css|g' index.html
-      
 
       - name: Set up GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
