@@ -198,7 +198,9 @@ rightBtn: [clickRightBtn1]  // [clickRightBtn1, clickRightBtn2]
 
 ## dataset
 
-`dataset`은 bind할 dataset을 지정하는 옵션입니다.  
+`dataset`은 bind할 dataset을 지정하는 옵션입니다. 
+
+dataset 옵션이 있을 경우, selectable 옵션은 항상 true입니다.
 
 아래와 같은 규칙이 있는 html 요소를 참조합니다.
 
@@ -328,6 +330,8 @@ rightBtn: [clickRightBtn1]  // [clickRightBtn1, clickRightBtn2]
 
 `selectable`이 `true`일 경우, 사용자는 Node를 클릭하여 선택할 수 있습니다.  
 또한, 왼쪽 `Ctrl` 키와 함께 클릭하면 다중 선택도 가능합니다.
+
+dataset 옵션이 있을 경우, selectable 옵션은 항상 true입니다.
 
 **예시:**
 ```html
