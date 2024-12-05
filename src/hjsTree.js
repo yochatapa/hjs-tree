@@ -482,6 +482,8 @@ HjsTree.prototype.initOption = function(option){
 
     if(!!!this._option.selectable) this._option.selectable = false;
 
+    if(!!this._option.dataset) this._option.selectable = true;
+
     if(!!!this._option.contextMenu) this._option.contextMenu = false;
 
     if(!!!this._option.toggleHandle) this._option.toggleHandle = "left";
@@ -879,7 +881,8 @@ HjsTree.prototype.setEditable = function(editable){
 }
 
 HjsTree.prototype.setSelectable = function(selectable){
-    this._option.selectable = selectable;
+    if(!!this._option.dataset) this._option.selectable = true;
+    else this._option.selectable = selectable;
     this.renderTree();
 }
 
@@ -900,6 +903,7 @@ HjsTree.prototype.setDefaultNodeId = function(defaultNodeId){
 
 HjsTree.prototype.setDataset = function(dataset){
     this._option.dataset = dataset;
+    this._option.selectable = true;
     this.renderTree();
 }
 
