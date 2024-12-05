@@ -1,14 +1,14 @@
-# HjsTree 속성 설명
+# HjsTree 옵션 설명
 
-HjsTree의 주요 속성들을 설명합니다.
+HjsTree의 주요 옵션들을 설명합니다.
 
 ## selector
 
-`selector`는 HjsTree 생성 위치를 지정해주는 속성입니다.
+`selector`는 HjsTree 생성 위치를 지정해주는 옵션입니다.
 
 ## treeData
 
-`treeData`는 HjsTree에서 사용될 데이터를 지정해주는 속성입니다.  
+`treeData`는 HjsTree에서 사용될 데이터를 지정해주는 옵션입니다.  
 
 ### treeData 구조 예시
 ```javascript
@@ -25,15 +25,15 @@ JSON 데이터의 key값은 컬럼명, value값은 데이터입니다.
 
 ## idColumn
 
-`idColumn`은 treeData가 Tree 구성을 갖추는 데 키값이 되는 Column 명을 지정해주는 속성입니다.
+`idColumn`은 treeData가 Tree 구성을 갖추는 데 키값이 되는 Column 명을 지정해주는 옵션입니다.
 
 ## upIdColumn
 
-`upIdColumn`은 상위 Node의 Tree 키 값을 갖는 Column명을 지정해주는 속성입니다.
+`upIdColumn`은 상위 Node의 Tree 키 값을 갖는 Column명을 지정해주는 옵션입니다.
 
 ## labelColumn
 
-`labelColumn`은 트리의 Main 영역 - label 정보에 표시될 데이터를 가진 Column을 지정해주는 속성입니다.  
+`labelColumn`은 트리의 Main 영역 - label 정보에 표시될 데이터를 가진 Column을 지정해주는 옵션입니다.  
 `labelColumn`는 단수 또는 복수로 지정할 수 있습니다.
 
 ### 사용 예시
@@ -45,29 +45,120 @@ labelColumn: "LABEL_NM";
 labelColumn: ["LABEL_NM", "LABEL_NM_2", "LABEL_NM_3"];
 ```
 
+## labelOption
+
+`labelOption`은 컬럼별로 label에 관한 여러 옵션을 지정해주는 옵션입니다.  
+
+`labelOption`은 다음과 같은 구조을 가지고 있습니다.
+
+**구조 예시**
+```json
+"labelOption" : {
+    "컬럼명" : {     
+        "condition"         : function,    
+        "tagName"           : string,
+        "maxDepth"          : number,
+        "minDepth"          : number,
+        "selectCodeColumn"  : string,
+        "selectNameColumn"  : string,
+        "selectData"        : array
+    }
+}
+```
+
+`labelOption`은 다음과 같은 상세 옵션을 가지고 있습니다.
+
+1. **condition**
+    - 조건에 따라 각 컬럼의 editable을 조정할 수 있습니다.
+        조건 function의 true, false 값에 따라 editable 상태가 변화합니다.
+    - @type {function}
+    - @param {HjsTreeNode} 선택된 node
+<br>
+
+2. **tagName**
+    - 수정하는 editor의 태그명을 조정할 수 있습니다.
+    - @type {string}
+<br> 
+
+3. **maxDepth**
+    - depth가 0인 최상단 노드부터 maxDepth 값 까지 표출합니다.
+    - @type {number}
+<br>
+
+4. **minDepth**
+    - minDepth값의 node부터 최하단 노드까지 표출합니다.
+    - @type {number}
+<br>
+
+5. **selectCodeColumn**
+    - tagName이 select일 시(combobox) 사용하는 옵션으로, select의 code값을 담당하는 컬럼명을 지정할 수 있습니다.
+    - @type {string}
+
+<br>
+
+6. **selectNameColumn**
+    - tagName이 select일 시(combobox) 사용하는 옵션으로, select의 name값을 담당하는 컬럼명을 지정할 수 있습니다.
+    - @type {string}
+<br>
+
+7. **selectData**
+    - tagName이 select일 시(combobox) 사용하는 옵션으로, select 안의 data를 지정할 수 있습니다.
+    - @type {array}
+    **구조 예시**
+    ```json
+    "selectData" : [
+        {
+            "selectCodeColumn 값" : value,
+            "selectNameColumn 값" : value,
+        }
+    ]
+    ```
+
+- **select 사용 예시**
+```json
+"labelOption" : {
+    "컬럼명" : { 
+        "tagName"   : "select",
+        "selectCodeColumn" : "code",
+        "selectNameColumn" : "name",
+        "selectData" : [
+            {   
+                "code" : "1",
+                "name" : "일",
+            },
+            {   
+                "code" : "2",
+                "name" : "이",
+            }
+        ]
+    }
+}
+```
+
+
 ## rootName
 
-`rootName`은 root 레벨의 node들이 갖는 tree의 키 값을 지정하는 속성입니다.  
+`rootName`은 root 레벨의 node들이 갖는 tree의 키 값을 지정하는 옵션입니다.  
 `rootName`을 따로 지정하지 않을 시 기본 값은 `"tree-root"`로 설정됩니다.
 
 ## orderColumn
 
-`orderColumn`은 tree 내에서 순서를 나타내는 column의 column명을 지정하는 속성입니다.  
+`orderColumn`은 tree 내에서 순서를 나타내는 column의 column명을 지정하는 옵션입니다.  
 `orderColumn`을 따로 지정하지 않을 시 기본 값은 `"TREE_ORDER"`로 설정됩니다.
 
 ## defaultNodeId
 
-`defaultNodeId`는 각 Node의 HTML 요소 ID값을 지정하는 속성입니다.  
+`defaultNodeId`는 각 Node의 HTML 요소 ID값을 지정하는 옵션입니다.  
 `defaultNodeId`를 따로 지정하지 않을 시 기본 값은 `"treenode"`입니다.
 
 **Node의 HTML 요소 ID는** `defaultNodeId + "_" + Node Index` 입니다.
 
 ## checkbox
 
-`checkbox`는 Node에 checkbox를 생성할 지 지정하는 속성입니다.  
+`checkbox`는 Node에 checkbox를 생성할 지 지정하는 옵션입니다.  
 `checkbox`를 따로 지정하지 않으면 checkbox는 생성되지 않습니다.
 
-`checkbox`는 세 가지 속성을 갖습니다:
+`checkbox`는 세 가지 옵션을 갖습니다:
 - `left` : Node의 Main-Left 영역에 checkbox가 생성됩니다.
 - `right` : Node의 Main-Right 영역에 checkbox가 생성됩니다.
 - `both` : Node의 Main-Left 영역과 Main-Right 영역 모두에 checkbox가 생성됩니다.
@@ -168,24 +259,89 @@ checkEvent: [checkEvent1, checkEvent2],
 
 ## leftBtn
 
-`leftBtn`은 Node의 Main-Left 영역에 버튼을 생성할 지 지정하는 속성입니다.  
+`leftBtn`은 Node의 Main-Left 영역에 버튼을 생성할 지 지정하는 옵션입니다.  
 `leftBtn`을 따로 지정하지 않으면 버튼은 생성되지 않습니다.
 
-`leftBtn`은 함수를 속성값으로 갖습니다.  
+`leftBtn`은 `함수` 또는 `버튼 옵션`을 옵션값으로 갖습니다.  
 `leftBtn`은 배열에 담아서 상태값을 전달합니다.  
-`leftBtn`에는 번호가 붙습니다. 해당 번호는 왼쪽부터 시작하며, 0부터 시작합니다.
+
+`leftBtn`에는 번호가 붙습니다. 
+해당 번호는 왼쪽부터 시작하며, 0부터 시작합니다.
 
 **예시:**
 ```javascript
 leftBtn: [clickLeftBtn1]  // ["clickLeftBtn1", "clickLeftBtn2"]
+
+leftBtn : [
+    {
+        "innerText" : string,
+        "tagName"   : string,
+        "class"     : array,
+        "condition" : function,
+        "maxDepth"  : number,
+        "minDepth"  : number,
+        "event"     : {
+            "event 명" : function // 이벤트 함수
+        }
+    }
+]
 ```
+
+1. **innerText**
+    - 버튼 안에 들어갈 text를 지정합니다.
+    - @type {string}
+<br>
+
+2. **tagName**
+    - 버튼의 태그명을 조정할 수 있습니다.
+    - @type {string}
+<br> 
+
+3. **class**
+    - 버튼에 추가할 class명을 지정합니다.
+    - @type {array}
+<br>
+
+4. **condition**
+    - 조건에 따라 버튼의 표출여부를 조정할 수 있습니다.
+        조건 function의 true, false 값에 따라 표출여부가 변화합니다.
+    - @type {function}
+    - @param {HjsTreeNode} 선택된 node
+<br>
+
+5. **maxDepth**
+    - depth가 0인 최상단 노드부터 maxDepth 값 까지 표출합니다.
+    - @type {number}
+<br>
+
+6. **minDepth**
+    - minDepth값의 node부터 최하단 노드까지 표출합니다.
+    - @type {number}
+<br>
+
+7. **event**
+    - 버튼의 이벤트를 제어합니다. 다양한 이벤트를 key로, 이벤트 동작 함수를 value로 하는 json 데이터를 입력해줍니다.
+    - @type {json}
+    - value function param
+        - @param {event} Native Event
+        - @param {HjsTreeNode} 선택된 node
+
+    **구조 예시**
+    ```javascript
+    "event" : [
+        "click" : (e,node)=>alert("I'm click!"),
+        "mouseover" : (e,node)=>alert("mouseover")
+        ...
+    ]
+    ```
+    
 
 ## rightBtn
 
-`rightBtn`은 Node의 Main-Right 영역에 버튼을 생성할지 지정하는 속성입니다.  
+`rightBtn`은 Node의 Main-Right 영역에 버튼을 생성할지 지정하는 옵션입니다.  
 `rightBtn`을 따로 지정하지 않으면 버튼은 생성되지 않습니다.
 
-`rightBtn`은 함수를 속성값으로 갖습니다.  
+`rightBtn`은 `함수` 또는 `버튼 옵션`을 옵션값으로 갖습니다.  
 `rightBtn`은 배열에 담아서 상태값을 전달합니다.
 
 `rightBtn`에는 숫자가 붙습니다.  
@@ -194,7 +350,69 @@ leftBtn: [clickLeftBtn1]  // ["clickLeftBtn1", "clickLeftBtn2"]
 **예시:**
 ```javascript
 rightBtn: [clickRightBtn1]  // [clickRightBtn1, clickRightBtn2]
+
+rightBtn : [
+    {
+        "innerText" : string,
+        "tagName"   : string,
+        "class"     : array,
+        "condition" : function,
+        "maxDepth"  : number,
+        "minDepth"  : number,
+        "event"     : {
+            "event 명" : function // 이벤트 함수
+        }
+    }
+]
 ```
+
+1. **innerText**
+    - 버튼 안에 들어갈 text를 지정합니다.
+    - @type {string}
+<br>
+
+2. **tagName**
+    - 버튼의 태그명을 조정할 수 있습니다.
+    - @type {string}
+<br> 
+
+3. **class**
+    - 버튼에 추가할 class명을 지정합니다.
+    - @type {array}
+<br>
+
+4. **condition**
+    - 조건에 따라 버튼의 표출여부를 조정할 수 있습니다.
+        조건 function의 true, false 값에 따라 표출여부가 변화합니다.
+    - @type {function}
+    - @param {HjsTreeNode} 선택된 node
+<br>
+
+5. **maxDepth**
+    - depth가 0인 최상단 노드부터 maxDepth 값 까지 표출합니다.
+    - @type {number}
+<br>
+
+6. **minDepth**
+    - minDepth값의 node부터 최하단 노드까지 표출합니다.
+    - @type {number}
+<br>
+
+7. **event**
+    - 버튼의 이벤트를 제어합니다. 다양한 이벤트를 key로, 이벤트 동작 함수를 value로 하는 json 데이터를 입력해줍니다.
+    - @type {json}
+    - value function param
+        - @param {event} Native Event
+        - @param {HjsTreeNode} 선택된 node
+
+    **구조 예시**
+    ```javascript
+    "event" : [
+        "click" : (e,node)=>alert("I'm click!"),
+        "mouseover" : (e,node)=>alert("mouseover")
+        ...
+    ]
+    ```
 
 ## dataset
 
@@ -263,6 +481,97 @@ dataset 옵션이 있을 경우, selectable 옵션은 항상 true입니다.
 <input id="EDITABLE_input">
 ```
 
+## editOption
+
+`editOption`은 tree가 `editable` 옵션이 `true`일 때, 다양한 설정을 통해 각 컬럼 별 `editOption`을 제어할 수 있는 옵션입니다.
+
+`editOption`은 다음과 같은 구조을 가지고 있습니다.
+
+**구조 예시**
+```json
+"editOption" : {
+    "컬럼명" : {
+        "editable"  : boolean,      
+        "condition" : function,    
+        "tagName"   : string,
+        "directEdit": boolean,
+        "selectCodeColumn" : string,
+        "selectNameColumn" : string,
+        "selectData" : array
+    }
+}
+```
+
+`editOption`은 다음과 같은 상세 옵션을 가지고 있습니다.
+
+1. **editable**
+    - 각 컬럼의 editable을 조정할 수 있습니다.
+    - @type {boolean}
+<br>
+
+2. **condition**
+    - 조건에 따라 각 컬럼의 editable을 조정할 수 있습니다.
+        조건 function의 true, false 값에 따라 editable 상태가 변화합니다.
+    - @type {function}
+    - @param {HjsTreeNode} 선택된 node
+<br>
+
+3. **tagName**
+    - 수정하는 editor의 태그명을 조정할 수 있습니다.
+    - @type {string}
+<br>   
+
+4. **directEdit**
+    - 클릭하지 않고도 바로 수정할 수 있도록 editor를 띄웁니다.
+    - @type {boolean}
+<br>   
+
+5. **selectCodeColumn**
+    - tagName이 select일 시(combobox) 사용하는 옵션으로, select의 code값을 담당하는 컬럼명을 지정할 수 있습니다.
+    - @type {string}
+
+<br>
+
+6. **selectNameColumn**
+    - tagName이 select일 시(combobox) 사용하는 옵션으로, select의 name값을 담당하는 컬럼명을 지정할 수 있습니다.
+    - @type {string}
+<br>
+
+7. **selectData**
+    - tagName이 select일 시(combobox) 사용하는 옵션으로, select 안의 data를 지정할 수 있습니다.
+    - @type {array}
+    **구조 예시**
+    ```json
+    "selectData" : [
+        {
+            "selectCodeColumn 값" : value,
+            "selectNameColumn 값" : value,
+        }
+    ]
+    ```
+
+- **select 사용 예시**
+```json
+"editOption" : {
+    "컬럼명" : { 
+        "tagName"   : "select",
+        "selectCodeColumn" : "code",
+        "selectNameColumn" : "name",
+        "selectData" : [
+            {   
+                "code" : "1",
+                "name" : "일",
+            },
+            {   
+                "code" : "2",
+                "name" : "이",
+            }
+        ]
+    }
+}
+```
+
+
 ## draggable
 
 `draggable`은 node를 드래그하여 움직일 수 있는지 여부를 지정하는 옵션입니다.  
@@ -319,6 +628,38 @@ dataset 옵션이 있을 경우, selectable 옵션은 항상 true입니다.
 
 <div id="draggable_div"></div>
 ```
+
+## dragOption
+
+`dragOption`은 tree가 `draggable` 옵션이 `true`일 때, 다양한 설정을 통해 `dragOption`을 제어할 수 있는 옵션입니다.
+
+`dragOption`은 다음과 같은 구조을 가지고 있습니다.
+
+**구조 예시**
+```json
+"dragOption" : {
+    "moveParent": boolean,
+    "maxDepth"  : number,
+    "minDepth"  : number,
+}
+```
+
+`dragOption`은 다음과 같은 상세 옵션을 가지고 있습니다.
+
+1. **moveParent**
+    - 부모 node로 이동할 수 있는지 여부를 제어할 수 있습니다. moveParent가 false일 경우, 자신의 부모 아래에서만 이동이 가능합니다.
+    - @type {boolean}
+<br> 
+
+2. **maxDepth**
+    - depth가 0인 최상단 노드부터 maxDepth 값 까지 drag handle을 표출합니다.
+    - @type {number}
+<br>
+
+3. **minDepth**
+    - minDepth값의 node부터 최하단 노드까지 drag handle을 표출합니다.
+    - @type {number}
+<br>
 
 
 ## selectable

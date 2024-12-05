@@ -90,7 +90,7 @@ let treeData = [{
 
 ## 옵션
 
-HjsTree에는 20개의 옵션값이 존재합니다.
+HjsTree에는 23개의 옵션값이 존재합니다.
 
 각 옵션에 대한 설명은 다음 표와 같습니다.
 
@@ -102,21 +102,24 @@ HjsTree에는 20개의 옵션값이 존재합니다.
 |3   | [idColumn](./docs/props/README.md#idColumn)              | O      | ID 컬럼 이름을 지정합니다.           |
 |4   | [upIdColumn](./docs/props/README.md#upIdColumn)          | O      | 상위 ID 컬럼을 지정합니다.           |
 |5   | [labelColumn](./docs/props/README.md#labelColumn)        | O      | 노드의 라벨을 정의합니다.            |
-|6   | [rootName](./docs/props/README.md#rootName)              |        | 루트 노드의 이름을 설정합니다.       |    
-|7   | [orderColumn](./docs/props/README.md#orderColumn)        |        | 노드 순서를 지정하는 컬럼입니다.     |        
-|8   | [defaultNodeId](./docs/props/README.md#defaultNodeId)    |        | 기본 노드 ID를 설정합니다.           |
-|9   | [checkbox](./docs/props/README.md#checkbox)              |        | 체크박스를 활성화합니다.             |
-|10  | [checkboxColumn](./docs/props/README.md#checkboxColumn)  |        | 체크박스 상태를 설정하는 컬럼입니다. |            
-|11  | [checkTrueValue](./docs/props/README.md#checkTrueValue)  |        | 체크박스의 참 값을 정의합니다.       |     
-|12  | [checkFalseValue](./docs/props/README.md#checkFalseValue)|        | 체크박스의 거짓 값을 정의합니다.     |     
-|13  | [checkEvent](./docs/props/README.md#checkEvent)          |        | 체크박스 이벤트를 설정합니다.        |   
-|14  | [leftBtn](./docs/props/README.md#leftBtn)                |        | 왼쪽 버튼 옵션을 설정합니다.         |
-|15  | [rightBtn](./docs/props/README.md#rightBtn)              |        | 오른쪽 버튼 옵션을 설정합니다.       |    
-|16  | [dataset](./docs/props/README.md#dataset)                |        | 데이터셋을 정의합니다.               |
-|17  | [editable](./docs/props/README.md#editable)              |        | 노드를 바로 편집할 수 있습니다.      |
-|18  | [draggable](./docs/props/README.md#draggable)            |        | 노드 드래그를 활성화합니다.          | 
-|19  | [selectable](./docs/props/README.md#selectable)          |        | 노드 선택 가능 여부를 설정합니다.    |         
-|20  | [event](./docs/props/README.md#event)                    |        | 이벤트 핸들링을 정의합니다.          | 
+|6   | [labelOption](./docs/props/README.md#labelOption)        |        | 컬럼별 라벨 옵션을 정의합니다.       |
+|7   | [rootName](./docs/props/README.md#rootName)              |        | 루트 노드의 이름을 설정합니다.       |    
+|8   | [orderColumn](./docs/props/README.md#orderColumn)        |        | 노드 순서를 지정하는 컬럼입니다.     |        
+|9   | [defaultNodeId](./docs/props/README.md#defaultNodeId)    |        | 기본 노드 ID를 설정합니다.           |
+|10  | [checkbox](./docs/props/README.md#checkbox)              |        | 체크박스를 활성화합니다.             |
+|11  | [checkboxColumn](./docs/props/README.md#checkboxColumn)  |        | 체크박스 상태를 설정하는 컬럼입니다. |            
+|12  | [checkTrueValue](./docs/props/README.md#checkTrueValue)  |        | 체크박스의 참 값을 정의합니다.       |     
+|13  | [checkFalseValue](./docs/props/README.md#checkFalseValue)|        | 체크박스의 거짓 값을 정의합니다.     |     
+|14  | [checkEvent](./docs/props/README.md#checkEvent)          |        | 체크박스 이벤트를 설정합니다.        |   
+|15  | [leftBtn](./docs/props/README.md#leftBtn)                |        | 왼쪽 버튼 옵션을 설정합니다.         |
+|16  | [rightBtn](./docs/props/README.md#rightBtn)              |        | 오른쪽 버튼 옵션을 설정합니다.       |    
+|17  | [dataset](./docs/props/README.md#dataset)                |        | 데이터셋을 정의합니다.               |
+|18  | [editable](./docs/props/README.md#editable)              |        | 노드를 바로 편집할 수 있습니다.      |
+|19  | [editOption](./docs/props/README.md#editOption)          |        | 컬럼별 편집 옵션을 제공합니다.       |
+|20  | [draggable](./docs/props/README.md#draggable)            |        | 노드 드래그를 활성화합니다.          | 
+|21  | [dragOption](./docs/props/README.md#dragOption)          |        | 노드 드래그 옵션을 제공합니다.       |
+|22  | [selectable](./docs/props/README.md#selectable)          |        | 노드 선택 가능 여부를 설정합니다.    |         
+|23  | [event](./docs/props/README.md#event)                    |        | 이벤트 핸들링을 정의합니다.          | 
 
 
 ## 메소드
