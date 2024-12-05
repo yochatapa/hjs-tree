@@ -4,7 +4,7 @@ Tree 메소드은 총 42개의 다양한 메소드들로 이루어져있습니�
 
 | **분류**                   | **메소드**                                    | **설명**                                      |
 |----------------------------|----------------------------------------------|-----------------------------------------------|
-| **초기화 및 속성 관련 메소드** | 1. [init](#init)                           | 트리를 초기화합니다.                           |
+| **초기화 및 옵션 관련 메소드** | 1. [init](#init)                           | 트리를 초기화합니다.                           |
 |                            | 2. [getIdColumn](#getIdColumn)               | ID 컬럼을 가져옵니다.                          |
 |                            | 3. [getUpIdColumn](#getUpIdColumn)           | 부모 ID 컬럼을 가져옵니다.                     |
 |                            | 4. [setEditable](#setEditable)               | 트리를 편집 가능하도록 설정합니다.              |
@@ -50,17 +50,17 @@ Tree 메소드은 총 42개의 다양한 메소드들로 이루어져있습니�
 
 각 메소드를 기능별로 구분해보면 다음과 같이 분류됩니다.
 
-1. 초기화 및 속성 관련 메소드 (13개 메소드)
+1. 초기화 및 옵션 관련 메소드 (13개 메소드)
 2. Tree 동작 메소드 (11개 메소드)
 3. Node 관련 메소드 (13개 메소드)
 4. Data 관련 메소드 (5개 메소드)
 
-# 초기화 및 속성 관련 메소드
+# 초기화 및 옵션 관련 메소드
 
-초기화 및 속성 관련 메소드는 Tree를 초기화하는 기능과 각 속성을 설정하고, 가져오는 기능 등을 수행합니다.
-초기화 및 속성 관련 메소드는 Tree를 구성하는데 중요한 역할을 하는 메소드들입니다.
+초기화 및 옵션 관련 메소드는 Tree를 초기화하는 기능과 각 옵션을 설정하고, 가져오는 기능 등을 수행합니다.
+초기화 및 옵션 관련 메소드는 Tree를 구성하는데 중요한 역할을 하는 메소드들입니다.
 
-초기화 및 속성 관련 메소드는 다음과 같습니다.
+초기화 및 옵션 관련 메소드는 다음과 같습니다.
 
 1. init
 2. getIdColumn
@@ -141,7 +141,7 @@ tree.getUpIdColumn();
 
 ## setEditable
 
-`setEditable` 메소드는 Tree의 `editable` 속성을 설정하는 메소드입니다.
+`setEditable` 메소드는 Tree의 `editable` 옵션을 설정하는 메소드입니다.
 
 ### 매개변수
 - `{boolean} editable`: Tree의 편집 가능 여부를 설정합니다.  
@@ -158,7 +158,7 @@ tree.setEditable(false); // Tree를 편집 불가 상태로 설정
 
 ## setSelectable
 
-`setSelectable` 메소드는 Tree의 `selectable` 속성을 설정하는 메소드입니다.
+`setSelectable` 메소드는 Tree의 `selectable` 옵션을 설정하는 메소드입니다.
 
 ### 매개변수
 - `{boolean} selectable`: Tree의 노드 선택 가능 여부를 설정합니다.  
@@ -175,7 +175,7 @@ tree.setSelectable(false); // Tree를 선택 불가 상태로 설정
 
 ## setDraggable
 
-`setDraggable` 메소드는 Tree의 `draggable` 속성을 설정하는 메소드입니다.
+`setDraggable` 메소드는 Tree의 `draggable` 옵션을 설정하는 메소드입니다.
 
 ### 매개변수
 - `{boolean} draggable`: Tree의 노드를 드래그 가능한지 여부를 설정합니다.  

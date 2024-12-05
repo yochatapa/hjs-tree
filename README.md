@@ -50,7 +50,7 @@ tree.init({
 
 HjsTree는 **Tree** 영역과 **Node** 영역으로 구성되어 있습니다.
 
-1. [Tree](./docs/tree/README.md): Tree 영역은 HjsTree의 **속성**과 **Node 정보** 등 트리와 관련된 **전체적인 정보**를 담고 있는 영역입니다.
+1. [Tree](./docs/tree/README.md): Tree 영역은 HjsTree의 **옵션**과 **Node 정보** 등 트리와 관련된 **전체적인 정보**를 담고 있는 영역입니다.
 
 2. [Node](./docs/node/README.md): Node 영역은 각 Node의 **데이터**, **상태** 등 **개별 Node와 관련된 정보**를 담고 있는 영역입니다.
 
@@ -86,14 +86,14 @@ let treeData = [{
 ]
 ```
 
-## 속성
+## 옵션
 
-HjsTree에는 20개의 속성값이 존재합니다.
+HjsTree에는 20개의 옵션값이 존재합니다.
 
-각 속성에 대한 설명은 다음 표와 같습니다.
+각 옵션에 대한 설명은 다음 표와 같습니다.
 
 
-|순번| 속성 이름                                                 | 필수   | 설명                                |
+|순번| 옵션 이름                                                 | 필수   | 설명                                |
 |----|----------------------------------------------------------|--------|------------------------------------|        
 |1   | [selector](./docs/props/README.md#selector)              | O      | 선택자를 정의합니다.                 |          
 |2   | [treeData](./docs/props/README.md#treeData)              | O      | 트리 데이터를 설정합니다.            |
@@ -108,8 +108,8 @@ HjsTree에는 20개의 속성값이 존재합니다.
 |11  | [checkTrueValue](./docs/props/README.md#checkTrueValue)  |        | 체크박스의 참 값을 정의합니다.       |     
 |12  | [checkFalseValue](./docs/props/README.md#checkFalseValue)|        | 체크박스의 거짓 값을 정의합니다.     |     
 |13  | [checkEvent](./docs/props/README.md#checkEvent)          |        | 체크박스 이벤트를 설정합니다.        |   
-|14  | [leftBtn](./docs/props/README.md#leftBtn)                |        | 왼쪽 버튼 속성을 설정합니다.         |
-|15  | [rightBtn](./docs/props/README.md#rightBtn)              |        | 오른쪽 버튼 속성을 설정합니다.       |    
+|14  | [leftBtn](./docs/props/README.md#leftBtn)                |        | 왼쪽 버튼 옵션을 설정합니다.         |
+|15  | [rightBtn](./docs/props/README.md#rightBtn)              |        | 오른쪽 버튼 옵션을 설정합니다.       |    
 |16  | [dataset](./docs/props/README.md#dataset)                |        | 데이터셋을 정의합니다.               |
 |17  | [editable](./docs/props/README.md#editable)              |        | 노드를 바로 편집할 수 있습니다.      |
 |18  | [draggable](./docs/props/README.md#draggable)            |        | 노드 드래그를 활성화합니다.          | 
@@ -125,7 +125,7 @@ HjsTree의 메소드는 **Tree 메소드**와 **Node 메소드**로 구분할 �
 
 | **분류**                   | **메소드**                                    | **설명**                                      |
 |----------------------------|----------------------------------------------|-----------------------------------------------|
-| **초기화 및 속성 관련 메소드** | 1. [init](./docs/tree/Methods.md#init)                           | 트리를 초기화합니다.                           |
+| **초기화 및 옵션 관련 메소드** | 1. [init](./docs/tree/Methods.md#init)                           | 트리를 초기화합니다.                           |
 |                            | 2. [getIdColumn](./docs/tree/Methods.md#getIdColumn)               | ID 컬럼을 가져옵니다.                          |
 |                            | 3. [getUpIdColumn](./docs/tree/Methods.md#getUpIdColumn)           | 부모 ID 컬럼을 가져옵니다.                     |
 |                            | 4. [setEditable](./docs/tree/Methods.md#setEditable)               | 트리를 편집 가능하도록 설정합니다.              |
