@@ -52,7 +52,7 @@ labelColumn: ["LABEL_NM", "LABEL_NM_2", "LABEL_NM_3"];
 `labelOption`은 다음과 같은 구조을 가지고 있습니다.
 
 **구조 예시**
-```json
+```javascript
 "labelOption" : {
     "컬럼명" : {     
         "condition"         : function,    
@@ -105,7 +105,7 @@ labelColumn: ["LABEL_NM", "LABEL_NM_2", "LABEL_NM_3"];
     - tagName이 select일 시(combobox) 사용하는 옵션으로, select 안의 data를 지정할 수 있습니다.
     - @type {array}
     **구조 예시**
-    ```json
+    ```javascript
     "selectData" : [
         {
             "selectCodeColumn 값" : value,
@@ -115,7 +115,7 @@ labelColumn: ["LABEL_NM", "LABEL_NM_2", "LABEL_NM_3"];
     ```
 
 - **select 사용 예시**
-```json
+```javascript
 "labelOption" : {
     "컬럼명" : { 
         "tagName"   : "select",
@@ -488,7 +488,7 @@ dataset 옵션이 있을 경우, selectable 옵션은 항상 true입니다.
 `editOption`은 다음과 같은 구조을 가지고 있습니다.
 
 **구조 예시**
-```json
+```javascript
 "editOption" : {
     "컬럼명" : {
         "editable"  : boolean,      
@@ -541,7 +541,7 @@ dataset 옵션이 있을 경우, selectable 옵션은 항상 true입니다.
     - tagName이 select일 시(combobox) 사용하는 옵션으로, select 안의 data를 지정할 수 있습니다.
     - @type {array}
     **구조 예시**
-    ```json
+    ```javascript
     "selectData" : [
         {
             "selectCodeColumn 값" : value,
@@ -551,7 +551,7 @@ dataset 옵션이 있을 경우, selectable 옵션은 항상 true입니다.
     ```
 
 - **select 사용 예시**
-```json
+```javascript
 "editOption" : {
     "컬럼명" : { 
         "tagName"   : "select",
@@ -636,7 +636,7 @@ dataset 옵션이 있을 경우, selectable 옵션은 항상 true입니다.
 `dragOption`은 다음과 같은 구조을 가지고 있습니다.
 
 **구조 예시**
-```json
+```javascript
 "dragOption" : {
     "moveParent": boolean,
     "maxDepth"  : number,
