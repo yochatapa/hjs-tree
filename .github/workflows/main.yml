@@ -13,14 +13,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3  # GitHub 저장소를 체크아웃
 
-      - name: Update paths in index.html
-        run: |
-            # index.html 내에서 './src/HjsTree.js|css'를 '/hjs-tree/src/HjsTree.js|css'로 변경
-            sed -i 's|./src/HjsTree.js|/HjsTree.js|g' index.html
-            sed -i 's|./src/HjsTree.css|/HjsTree.css|g' index.html
-
-            ls -la src
-
       - name: Set up GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
