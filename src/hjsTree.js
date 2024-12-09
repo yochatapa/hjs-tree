@@ -228,6 +228,10 @@ HjsTree.prototype.getUpIdColumn = function(){
     return this._option.upIdColumn;
 }
 
+HjsTree.prototype.getOrderColumn = function(){
+    return this._option.orderColumn;
+}
+
 HjsTree.prototype.getLabelColumn = function(){
     return this._option.labelColumn;
 }
@@ -883,6 +887,7 @@ HjsTree.prototype._setMouseUp = function(event){
     // idColumn을 키로 하는 객체 생성
     const idColumn = this.getIdColumn();
     const upIdColumn = this.getUpIdColumn();
+    const orderColumn = this.getOrderColumn();
 
     const map = {};
     data.forEach(item => {
@@ -901,14 +906,19 @@ HjsTree.prototype._setMouseUp = function(event){
         }
     });
 
-    // 깊이 우선 탐색으로 데이터를 정렬
+    // 깊이 우선 탐색 및 ORDER_NO로 같은 depth에서 순서 정렬
     const result = [];
     const dfs = (node) => {
-        result.push({ ...node }); // 현재 노드를 결과에 추가
-        delete result[result.length - 1].children; // children 제거
-        node.children.forEach(child => dfs(child));
+        // 현재 노드 추가 (children 제거)
+        const sortedChildren = node.children.sort((a, b) => a[orderColumn] - b[orderColumn]);
+        result.push({ ...node });
+        delete result[result.length - 1].children;
+
+        // 자식 노드 재귀적으로 순회
+        sortedChildren.forEach(child => dfs(child));
     };
 
+    // 루트 노드 탐색
     tree.forEach(root => dfs(root));
     return result;
 };
