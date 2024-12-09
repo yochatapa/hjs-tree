@@ -22,51 +22,15 @@ HjsTree.prototype.init = function(option){
 
     if(this._option.changeNum==0){
         if(!!this._option.dataset){
-            let obj = this;
-            if(!!this._option.treeNode[1]){
-                for(let [col,val] of Object.entries(this._option.treeNode[1].getData())){
-                    let target = document.querySelectorAll("[name='"+this._option.dataset+"_"+col+"']");
-                    if(target.length>0) {
-                        this._option.changeNum++;
-                        target.forEach(item=>{
-                            item.addEventListener('change',function(){
-                                if(obj.getSelectedNodes().length==1){
-                                    let node = obj.getSelectedNode();
-                                    let id = item.name.replace(obj._option.dataset+"_","");
-                                    let flag = node.setNodeValue(id,item.value);
-                        
-                                    if(flag != 0){
-                                        item.value = node.getNodeValue(id);
-                                    }
-                                }
-                            })
-                            let targetName = item.getAttribute("name");
-                            // POWER MDD 용
-                            // if(datePickerList[targetName] != undefined && datePickerList[targetName] != null){
-                            //     datePickerList[targetName].on('close',()=>{
-                            //         if(obj.getSelectedNodes().length==1){
-                            //             let node = obj.getSelectedNode();
-                            //             let id = item.name.replace(obj._option.dataset+"_","");
-                            //             let flag = node.setNodeValue(id,item.value);
-                            
-                            //             if(flag != 0){
-                            //                 item.value = node.getNodeValue(id);
-                            //             }
-                            //         }
-                            //     })
-                            // }
-                        })
-                    }
-                }
-            }else{
-                let target = document.querySelectorAll("[name^='"+this._option.dataset+"_']");
+            for(let [col,val] of Object.entries(this._option?.treeNode?.[1]?.getData()??{})){
+                let target = document.querySelectorAll("[name='"+this._option.dataset+"_"+col+"']");
                 if(target.length>0) {
                     this._option.changeNum++;
                     target.forEach(item=>{
-                        item.addEventListener('change',function(){
-                            if(obj.getSelectedNodes().length==1){
-                                let node = obj.getSelectedNode();
-                                let id = item.name.replace(obj._option.dataset+"_","");
+                        item.addEventListener('change',(e)=>{
+                            if(this.getSelectedNodes().length==1){
+                                let node = this.getSelectedNode();
+                                let id = item.name.replace(this._option.dataset+"_","");
                                 let flag = node.setNodeValue(id,item.value);
                     
                                 if(flag != 0){
@@ -95,323 +59,25 @@ HjsTree.prototype.init = function(option){
         }
     }   
         
-    if(this._option.dragNum==0){
-        let obj = this;
-    
+    if(this._option.dragNum==0){    
         let target = document.querySelectorAll(this._option.selector);
         
         for(let idx=0;idx<target.length;idx++){
             this._option.dragNum++;
-            target[idx].addEventListener('mousemove', function(event) {
-                if (!obj._option.isDragging) {
-                    return;
-                }
-                
-                // 이전 위치에서의 변위를 계산합니다.
-                obj._option.offsetX = event.clientX - obj._option.originalX;
-                obj._option.offsetY = event.clientY - obj._option.originalY;
-        
-                // 현재 위치에 변위만큼 이동한 위치를 설정합니다.
-                let info = obj._option.dragNodeInfo;
-                let tInfo = target[idx].getBoundingClientRect();
-                obj._option.dragNode.getNodeElement().setAttribute("style",`position:absolute;top:${info.y-tInfo.y+obj._option.offsetY}px;left:${info.x-tInfo.x+obj._option.offsetX}px;width:${info.width}px;height:${info.height}px;`);
-
-                for (const [key,dropzone] of Object.entries(obj._option.treeNode)) {
-                    if(dropzone.getIndex()==0) continue;
-                    if(!!obj._option.dragOption){
-                        if(obj._option.dragOption.moveParent === false){
-                            if(dropzone.parentNode.getIndex() !== obj._option.dragNode.parentNode.getIndex()) continue;
-                        }
-                    }
-                    const dropzoneMain = dropzone.getMain();
-                    const dropzoneRect = dropzoneMain.getBoundingClientRect();
-                    if (
-                        event.clientX < dropzoneRect.x + dropzoneRect.width &&
-                        event.clientX > dropzoneRect.x &&
-                        event.clientY < dropzoneRect.y + dropzoneRect.height &&
-                        event.clientY > dropzoneRect.y &&
-                        dropzone != obj._option.dragNode
-                    ) {
-                        if(obj._option.prevElement != dropzoneMain){
-                            if(!!obj._option.prevElement){
-                                let index = obj.getIndexByElement(obj._option.prevElement);
-                                let node = obj.getNode(index);
-                                if(!!node){
-                                    node.getTop().setAttribute("style","height:0px;margin-bottom:0px");
-                                    node.getMiddle().setAttribute("style","height:0px;margin-bottom:0px");
-                                    node.getBottom().setAttribute("style","height:0px;margin-bottom:0px");
-                                }   
-                            }
-                            obj._option.prevElement = dropzoneMain;
-                        }
-                        dropzone.getTop().setAttribute("style","height:10px;margin-bottom:5px");
-                        dropzone.getMiddle().setAttribute("style","height:10px;margin-bottom:5px");
-                        
-                        if(obj._option.draggable){
-                            if(!!!obj._option.dragOption || obj._option.dragOption?.moveParent !== false){
-                                dropzone.getBottom().setAttribute("style","height:10px;margin-bottom:5px");
-                            }
-                        }
-                        
-                        break;
-                    }
-                }
-                
+            target[idx].addEventListener('mousemove', event => {
+                this._setMouseMove(event,target[idx]);
             });
 
-            target[idx].addEventListener('touchmove', function(event) {                
-                if (!obj._option.isDragging) {
-                    return;
-                }else{
-                    event.preventDefault();
-                }
-                
-                // 이전 위치에서의 변위를 계산합니다.
-                obj._option.offsetX = event.touches[0].clientX - obj._option.originalX;
-                obj._option.offsetY = event.touches[0].clientY - obj._option.originalY;
-        
-                // 현재 위치에 변위만큼 이동한 위치를 설정합니다.
-                let info = obj._option.dragNodeInfo;
-                let tInfo = target[idx].getBoundingClientRect();
-                obj._option.dragNode.getNodeElement().setAttribute("style",`position:absolute;top:${info.y-tInfo.y+obj._option.offsetY}px;left:${info.x-tInfo.x+obj._option.offsetX}px;width:${info.width}px;height:${info.height}px;`);
-        
-                for (const [key,dropzone] of Object.entries(obj._option.treeNode)) {
-                    if(dropzone.getIndex()==0) continue;
-                    if(!!obj._option.dragOption){
-                        if(obj._option.dragOption.moveParent === false){
-                            if(dropzone.parentNode.getIndex() !== obj._option.dragNode.parentNode.getIndex()) continue;
-                        }
-                    }
-                    const dropzoneMain = dropzone.getMain();
-                    let dropzoneRect = dropzoneMain.getBoundingClientRect();
-                    if (
-                        event.touches[0].clientX < dropzoneRect.x + dropzoneRect.width &&
-                        event.touches[0].clientX > dropzoneRect.x &&
-                        event.touches[0].clientY < dropzoneRect.y + dropzoneRect.height &&
-                        event.touches[0].clientY > dropzoneRect.y &&
-                        dropzone != obj._option.dragNode
-                    ) {
-                        if(obj._option.prevElement != dropzoneMain){
-                            if(!!obj._option.prevElement){
-                                let index = obj.getIndexByElement(obj._option.prevElement);
-                                let node = obj.getNode(index);
-                                if(!!node){
-                                    node.getTop().setAttribute("style","height:0px;margin-bottom:0px");
-                                    node.getMiddle().setAttribute("style","height:0px;margin-bottom:0px");
-                                    node.getBottom().setAttribute("style","height:0px;margin-bottom:0px");
-                                }   
-                            }
-                            obj._option.prevElement = dropzoneMain;
-                        }
-                        dropzone.getTop().setAttribute("style","height:20px;margin-bottom:5px");
-                        dropzone.getMiddle().setAttribute("style","height:20px;margin-bottom:5px");
-
-                        if(obj._option.draggable){
-                            if(!!!obj._option.dragOption || obj._option.dragOption?.moveParent !== false){
-                                dropzone.getBottom().setAttribute("style","height:20px;margin-bottom:5px");
-                            }
-                        }
-                        
-                        break;
-                    }
-                }
-                
+            target[idx].addEventListener('touchmove', event => {    
+                this._setMouseMove(event,target[idx]);
             });
         
-            document.addEventListener('mouseup', function(event) {
-                if(!obj._option.isDragging) return;
-                document.querySelector(obj._option.selector).classList.remove("tree-move")
-                obj._option.isDragging = false;
-                let dragNode = obj._option.dragNode;
-                let dragNodeElement = dragNode.getNodeElement();
-                
-                for (const [key,dropzone] of Object.entries(obj._option.treeNode)) {
-                    //top
-                    
-                    if(dropzone.getIndex()==0) continue;
-                    let dropzoneTarget = dropzone.getTop();
-                    let dropzoneRect = dropzoneTarget.getBoundingClientRect();
-                    
-                    if (
-                        event.clientX < dropzoneRect.x + dropzoneRect.width &&
-                        event.clientX > dropzoneRect.x &&
-                        event.clientY < dropzoneRect.y + dropzoneRect.height &&
-                        event.clientY > dropzoneRect.y &&
-                        dropzone != dragNode
-                    ) {
-                        
-                        //obj._option.dragNode를 dropzone으로 옮기기
-                        dragNodeElement.style.transform = "";
-                        document.getElementById("tempTreeDraggableDiv")?.remove();
-        
-                        if(!!dropzone.getParentNode())
-                            dragNode.moveNode(dropzone.getParentNode().getIndex(),"before",dropzone.getNodeElement());
-                        else
-                            dragNode.moveNode(-1,"before",dropzone.getNodeElement());
-                        
-                        dropzone.getTop().setAttribute("style","height:0px;margin-bottom:0px");
-                        dropzone.getMiddle().setAttribute("style","height:0px;margin-bottom:0px");
-                        dropzone.getBottom().setAttribute("style","height:0px;margin-bottom:0px");
-                        dragNode.getNodeElement().removeAttribute('style');
-                        break;
-                    }
-                    
-                    //middle
-                    dropzoneTarget = dropzone.getMiddle();
-                    dropzoneRect = dropzoneTarget.getBoundingClientRect();
-                    if (
-                        event.clientX < dropzoneRect.x + dropzoneRect.width &&
-                        event.clientX > dropzoneRect.x &&
-                        event.clientY < dropzoneRect.y + dropzoneRect.height &&
-                        event.clientY > dropzoneRect.y &&
-                        dropzone != dragNode
-                    ) {
-                        //obj._option.dragNode를 dropzone으로 옮기기
-                        dragNodeElement.style.transform = "";
-                        document.getElementById("tempTreeDraggableDiv")?.remove();
-                        dragNode.moveNode(dropzone.getParentNode().getIndex(),"after",dropzone.getNodeElement());
-        
-                        dropzone.getTop().setAttribute("style","height:0px;margin-bottom:0px");
-                        dropzone.getMiddle().setAttribute("style","height:0px;margin-bottom:0px");
-                        dropzone.getBottom().setAttribute("style","height:0px;margin-bottom:0px");
-                        dragNode.getNodeElement().removeAttribute('style');
-                        break;
-                    }
-        
-                    //bottom
-                    dropzoneTarget = dropzone.getBottom();
-                    dropzoneRect = dropzoneTarget.getBoundingClientRect();
-                    if (
-                        event.clientX < dropzoneRect.x + dropzoneRect.width &&
-                        event.clientX > dropzoneRect.x &&
-                        event.clientY < dropzoneRect.y + dropzoneRect.height &&
-                        event.clientY > dropzoneRect.y &&
-                        dropzone != dragNode
-                    ) {
-                        //obj._option.dragNode를 dropzone으로 옮기기
-                        dragNodeElement.style.transform = "";
-                        document.getElementById("tempTreeDraggableDiv")?.remove();
-                        dragNode.moveNode(dropzone.getIndex());
-        
-                        dropzone.getTop().setAttribute("style","height:0px;margin-bottom:0px");
-                        dropzone.getMiddle().setAttribute("style","height:0px;margin-bottom:0px");
-                        dropzone.getBottom().setAttribute("style","height:0px;margin-bottom:0px");
-                        dragNode.getNodeElement().removeAttribute('style');
-                        break;
-                    }
-
-                    document.getElementById("tempTreeDraggableDiv")?.remove();
-                    dragNodeElement.style.transform = "";
-                    dropzone.getTop().setAttribute("style","height:0px;margin-bottom:0px");
-                    dropzone.getMiddle().setAttribute("style","height:0px;margin-bottom:0px");
-                    dropzone.getBottom().setAttribute("style","height:0px;margin-bottom:0px");
-                    dragNode.getNodeElement().removeAttribute('style');
-                }
-
-                dragNode.getMain().classList.remove("tree-move-node")
-                
-                if(obj._option.dragOpen) obj.expandNode(dragNode.getIndex());
-                else obj.collapseNode(dragNode.getIndex());
-
-                if(!!obj._option?.event?.afterDrag) obj._option?.event?.afterDrag(dragNode,event);
+            document.addEventListener('mouseup', event => {
+                this._setMouseUp(event)
             });
 
-            document.addEventListener('touchend', function(event) {
-                if(!obj._option.isDragging) return;
-                document.querySelector(obj._option.selector).classList.remove("tree-move")
-                obj._option.isDragging = false;
-                let dragNode = obj._option.dragNode;
-                let dragNodeElement = dragNode.getNodeElement();
-                
-                for (const [key,dropzone] of Object.entries(obj._option.treeNode)) {
-                    //top
-                    if(dropzone.getIndex()==0) continue;
-                    let dropzoneTarget = dropzone.getTop();
-                    let dropzoneRect = dropzoneTarget.getBoundingClientRect();
-                    if (
-                        event.changedTouches[0].clientX < dropzoneRect.x + dropzoneRect.width &&
-                        event.changedTouches[0].clientX > dropzoneRect.x &&
-                        event.changedTouches[0].clientY < dropzoneRect.y + dropzoneRect.height &&
-                        event.changedTouches[0].clientY > dropzoneRect.y &&
-                        dropzone != dragNode
-                    ) {
-                        //obj._option.dragNode를 dropzone으로 옮기기
-                        dragNodeElement.style.transform = "";
-                        
-                        document.getElementById("tempTreeDraggableDiv")?.remove();
-        
-                        if(!!dropzone.getParentNode())
-                            dragNode.moveNode(dropzone.getParentNode().getIndex(),"before",dropzone.getNodeElement());
-                        else
-                            dragNode.moveNode(-1,"before",dropzone.getNodeElement());
-                        
-                        dropzone.getTop().setAttribute("style","height:0px;margin-bottom:0px");
-                        dropzone.getMiddle().setAttribute("style","height:0px;margin-bottom:0px");
-                        dropzone.getBottom().setAttribute("style","height:0px;margin-bottom:0px");
-                        dragNode.getNodeElement().removeAttribute('style');
-                        break;
-                    }
-                    
-                    //middle
-                    dropzoneTarget = dropzone.getMiddle();
-                    dropzoneRect = dropzoneTarget.getBoundingClientRect();
-                    
-                    if (
-                        event.changedTouches[0].clientX < dropzoneRect.x + dropzoneRect.width &&
-                        event.changedTouches[0].clientX > dropzoneRect.x &&
-                        event.changedTouches[0].clientY < dropzoneRect.y + dropzoneRect.height &&
-                        event.changedTouches[0].clientY > dropzoneRect.y &&
-                        dropzone != dragNode
-                    ) {
-                        //obj._option.dragNode를 dropzone으로 옮기기
-                        dragNodeElement.style.transform = "";
-                        document.getElementById("tempTreeDraggableDiv")?.remove();
-                        dragNode.moveNode(dropzone.getParentNode().getIndex(),"after",dropzone.getNodeElement());
-        
-                        dropzone.getTop().setAttribute("style","height:0px;margin-bottom:0px");
-                        dropzone.getMiddle().setAttribute("style","height:0px;margin-bottom:0px");
-                        dropzone.getBottom().setAttribute("style","height:0px;margin-bottom:0px");
-                        dragNode.getNodeElement().removeAttribute('style');
-                        break;
-                    }
-        
-                    //bottom
-                    dropzoneTarget = dropzone.getBottom();
-                    dropzoneRect = dropzoneTarget.getBoundingClientRect();
-                    
-                    if (
-                        event.changedTouches[0].clientX < dropzoneRect.x + dropzoneRect.width &&
-                        event.changedTouches[0].clientX > dropzoneRect.x &&
-                        event.changedTouches[0].clientY < dropzoneRect.y + dropzoneRect.height &&
-                        event.changedTouches[0].clientY > dropzoneRect.y &&
-                        dropzone != dragNode
-                    ) {
-                        //obj._option.dragNode를 dropzone으로 옮기기
-                        dragNodeElement.style.transform = "";
-                        document.getElementById("tempTreeDraggableDiv")?.remove();
-                        dragNode.moveNode(dropzone.getIndex());
-        
-                        dropzone.getTop().setAttribute("style","height:0px;margin-bottom:0px");
-                        dropzone.getMiddle().setAttribute("style","height:0px;margin-bottom:0px");
-                        dropzone.getBottom().setAttribute("style","height:0px;margin-bottom:0px");
-                        dragNode.getNodeElement().removeAttribute('style');
-                        break;
-                    }
-
-                    document.getElementById("tempTreeDraggableDiv")?.remove();
-                    dragNodeElement.style.transform = "";
-                    dropzone.getTop().setAttribute("style","height:0px;margin-bottom:0px");
-                    dropzone.getMiddle().setAttribute("style","height:0px;margin-bottom:0px");
-                    dropzone.getBottom().setAttribute("style","height:0px;margin-bottom:0px");
-                    dragNode.getNodeElement().removeAttribute('style');
-                }
-                
-                if(obj._option.dragOpen) obj.expandNode(dragNode.getIndex());
-                else obj.collapseNode(dragNode.getIndex());
-
-                dragNode.getMain().classList.remove("tree-move-node")
-
-                if(!!obj._option?.event?.afterDrag) obj._option?.event?.afterDrag(dragNode,event);
+            document.addEventListener('touchend', event => {
+                this._setMouseUp(event)
             });
         }
 
@@ -1047,6 +713,169 @@ HjsTree.prototype._deepCopy = function(obj) {
         return newObj;
     }
 }
+
+HjsTree.prototype._setMouseMove = function(event,target){
+    if (!this._option.isDragging) {
+        return;
+    }
+
+    let evt = event;
+
+    if(event.type === "touchmove"){
+        event.preventDefault();
+        evt = event.touches[0];
+    }
+    
+    // 이전 위치에서의 변위를 계산합니다.
+    this._option.offsetX = evt.clientX - this._option.originalX;
+    this._option.offsetY = evt.clientY - this._option.originalY;
+
+    // 현재 위치에 변위만큼 이동한 위치를 설정합니다.
+    let info = this._option.dragNodeInfo;
+    let tInfo = target.getBoundingClientRect();
+    this._option.dragNode.getNodeElement().setAttribute("style",`position:absolute;top:${info.y-tInfo.y+this._option.offsetY}px;left:${info.x-tInfo.x+this._option.offsetX}px;width:${info.width}px;height:${info.height}px;`);
+
+    for (const [key,dropzone] of Object.entries(this._option.treeNode)) {
+        if(dropzone.getIndex()==0) continue;
+        if(!!this._option.dragOption){
+            if(this._option.dragOption.moveParent === false){
+                if(dropzone.parentNode.getIndex() !== this._option.dragNode.parentNode.getIndex()) continue;
+            }
+        }
+        const dropzoneMain = dropzone.getMain();
+        const dropzoneRect = dropzoneMain.getBoundingClientRect();
+        if (
+            evt.clientX < dropzoneRect.x + dropzoneRect.width &&
+            evt.clientX > dropzoneRect.x &&
+            evt.clientY < dropzoneRect.y + dropzoneRect.height &&
+            evt.clientY > dropzoneRect.y &&
+            dropzone != this._option.dragNode
+        ) {
+            if(this._option.prevElement != dropzoneMain){
+                if(!!this._option.prevElement){
+                    let index = this.getIndexByElement(this._option.prevElement);
+                    let node = this.getNode(index);
+                    if(!!node){
+                        node.getTop().setAttribute("style","height:0px;margin-bottom:0px");
+                        node.getMiddle().setAttribute("style","height:0px;margin-bottom:0px");
+                        node.getBottom().setAttribute("style","height:0px;margin-bottom:0px");
+                    }   
+                }
+                this._option.prevElement = dropzoneMain;
+            }
+            dropzone.getTop().setAttribute("style",`height:${event.type !== "touchmove"?"10":"20"}px;margin-bottom:5px`);
+            dropzone.getMiddle().setAttribute("style",`height:${event.type !== "touchmove"?"10":"20"}px;margin-bottom:5px`);
+            
+            if(this._option.draggable){
+                if(!!!this._option.dragOption || this._option.dragOption?.moveParent !== false){
+                    dropzone.getBottom().setAttribute("style",`height:${event.type !== "touchmove"?"10":"20"}px;margin-bottom:5px`);
+                }
+            }
+            
+            break;
+        }
+    }
+}
+
+HjsTree.prototype._setMouseUp = function(event){
+    if(!this._option.isDragging) return;
+    let evt = event;
+    if(event.type === "touchend") evt = event.changedTouches[0];
+    document.querySelector(this._option.selector).classList.remove("tree-move")
+    this._option.isDragging = false;
+    let dragNode = this._option.dragNode;
+    let dragNodeElement = dragNode.getNodeElement();
+    
+    for (const [key,dropzone] of Object.entries(this._option.treeNode)) {
+        //top
+        
+        if(dropzone.getIndex()==0) continue;
+        let dropzoneTarget = dropzone.getTop();
+        let dropzoneRect = dropzoneTarget.getBoundingClientRect();
+        
+        if (
+            evt.clientX < dropzoneRect.x + dropzoneRect.width &&
+            evt.clientX > dropzoneRect.x &&
+            evt.clientY < dropzoneRect.y + dropzoneRect.height &&
+            evt.clientY > dropzoneRect.y &&
+            dropzone != dragNode
+        ) {
+            
+            //obj._option.dragNode를 dropzone으로 옮기기
+            dragNodeElement.style.transform = "";
+            document.getElementById("tempTreeDraggableDiv")?.remove();
+
+            if(!!dropzone.getParentNode())
+                dragNode.moveNode(dropzone.getParentNode().getIndex(),"before",dropzone.getNodeElement());
+            else
+                dragNode.moveNode(-1,"before",dropzone.getNodeElement());
+            
+            dropzone.getTop().setAttribute("style","height:0px;margin-bottom:0px");
+            dropzone.getMiddle().setAttribute("style","height:0px;margin-bottom:0px");
+            dropzone.getBottom().setAttribute("style","height:0px;margin-bottom:0px");
+            dragNode.getNodeElement().removeAttribute('style');
+            break;
+        }
+        
+        //middle
+        dropzoneTarget = dropzone.getMiddle();
+        dropzoneRect = dropzoneTarget.getBoundingClientRect();
+        if (
+            evt.clientX < dropzoneRect.x + dropzoneRect.width &&
+            evt.clientX > dropzoneRect.x &&
+            evt.clientY < dropzoneRect.y + dropzoneRect.height &&
+            evt.clientY > dropzoneRect.y &&
+            dropzone != dragNode
+        ) {
+            //obj._option.dragNode를 dropzone으로 옮기기
+            dragNodeElement.style.transform = "";
+            document.getElementById("tempTreeDraggableDiv")?.remove();
+            dragNode.moveNode(dropzone.getParentNode().getIndex(),"after",dropzone.getNodeElement());
+
+            dropzone.getTop().setAttribute("style","height:0px;margin-bottom:0px");
+            dropzone.getMiddle().setAttribute("style","height:0px;margin-bottom:0px");
+            dropzone.getBottom().setAttribute("style","height:0px;margin-bottom:0px");
+            dragNode.getNodeElement().removeAttribute('style');
+            break;
+        }
+
+        //bottom
+        dropzoneTarget = dropzone.getBottom();
+        dropzoneRect = dropzoneTarget.getBoundingClientRect();
+        if (
+            evt.clientX < dropzoneRect.x + dropzoneRect.width &&
+            evt.clientX > dropzoneRect.x &&
+            evt.clientY < dropzoneRect.y + dropzoneRect.height &&
+            evt.clientY > dropzoneRect.y &&
+            dropzone != dragNode
+        ) {
+            //obj._option.dragNode를 dropzone으로 옮기기
+            dragNodeElement.style.transform = "";
+            document.getElementById("tempTreeDraggableDiv")?.remove();
+            dragNode.moveNode(dropzone.getIndex());
+
+            dropzone.getTop().setAttribute("style","height:0px;margin-bottom:0px");
+            dropzone.getMiddle().setAttribute("style","height:0px;margin-bottom:0px");
+            dropzone.getBottom().setAttribute("style","height:0px;margin-bottom:0px");
+            dragNode.getNodeElement().removeAttribute('style');
+            break;
+        }
+
+        document.getElementById("tempTreeDraggableDiv")?.remove();
+        dragNodeElement.style.transform = "";
+        dropzone.getTop().setAttribute("style","height:0px;margin-bottom:0px");
+        dropzone.getMiddle().setAttribute("style","height:0px;margin-bottom:0px");
+        dropzone.getBottom().setAttribute("style","height:0px;margin-bottom:0px");
+        dragNode.getNodeElement().removeAttribute('style');
+    }
+
+    dragNode.getMain().classList.remove("tree-move-node")
+    
+    if(this._option.dragOpen) this.expandNode(dragNode.getIndex());
+    else this.collapseNode(dragNode.getIndex());
+
+    if(!!this._option?.event?.afterDrag) this._option?.event?.afterDrag(dragNode,event);
+ }
 
 /******************************************************************************************/
 
