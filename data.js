@@ -1,10 +1,5 @@
 const menuData = [
-    {
-        "UP_SN": 0,
-        "SN": 1,
-        "ORDER_NO": 0,
-        "MENU_NM": "Props"
-    }, 
+    
     /*{
         "UP_SN": 0,
         "SN": 2,
@@ -91,6 +86,12 @@ const menuData = [
         "MENU_NM": "searchNode",
         "MENU_CD" : "tree-search",
     }, */
+    {
+        "UP_SN": 0,
+        "SN": 1,
+        "ORDER_NO": 0,
+        "MENU_NM": "Props"
+    }, 
 ];
 
 const sampleData1 = [
@@ -100,17 +101,17 @@ const sampleData1 = [
         "ORDER_NO": 0,
         "NAME_COLUMN": "sample data 1"
     }, {
-        "UP_SN": 0,
+        "UP_SN": 3,
         "SN": 2,
         "ORDER_NO": 0,
         "NAME_COLUMN": "sample data 2"
     }, {
-        "UP_SN": 2,
+        "UP_SN": 4,
         "SN": 3,
-        "ORDER_NO": 0,
+        "ORDER_NO": 1,
         "NAME_COLUMN": "sample data 3"
     }, {
-        "UP_SN": 3,
+        "UP_SN": 0,
         "SN": 4,
         "ORDER_NO": 0,
         "NAME_COLUMN": "sample data 4"
