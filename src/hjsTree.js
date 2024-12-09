@@ -210,7 +210,9 @@ HjsTree.prototype.getModifiedData = function(){
 }
 
 HjsTree.prototype.initData = function(){
-    this._option.treeOrgData = this._option.treeData;
+    this._option.treeOrgData = this._deepCopy(this._option.treeData);
+
+    this._option.treeData = this._reorderData(this._option.treeData);
 
     for(let idx=0;idx<this._option.treeData.length;idx++){
         this._option.treeData[idx]["_orgIndex"] = idx;
@@ -876,6 +878,40 @@ HjsTree.prototype._setMouseUp = function(event){
 
     if(!!this._option?.event?.afterDrag) this._option?.event?.afterDrag(dragNode,event);
  }
+
+ HjsTree.prototype._reorderData = function(data){
+    // idColumn을 키로 하는 객체 생성
+    const idColumn = this.getIdColumn();
+    const upIdColumn = this.getUpIdColumn();
+
+    const map = {};
+    data.forEach(item => {
+        map[item[idColumn]] = { ...item, children: [] };
+    });
+
+    // 트리 구축
+    const tree = [];
+    data.forEach(item => {
+        if (item[upIdColumn] === 0) {
+            tree.push(map[item[idColumn]]);
+        } else {
+            if (map[item[upIdColumn]]) {
+                map[item[upIdColumn]].children.push(map[item[idColumn]]);
+            }
+        }
+    });
+
+    // 깊이 우선 탐색으로 데이터를 정렬
+    const result = [];
+    const dfs = (node) => {
+        result.push({ ...node }); // 현재 노드를 결과에 추가
+        delete result[result.length - 1].children; // children 제거
+        node.children.forEach(child => dfs(child));
+    };
+
+    tree.forEach(root => dfs(root));
+    return result;
+};
 
 /******************************************************************************************/
 
